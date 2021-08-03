@@ -1,0 +1,30 @@
+<div *ngIf="!isLoggedIn">
+  <ion-buttons slot="start">
+    <ion-button (click)="handleButtonClick()">
+      <ion-icon name="person-circle-outline">Th</ion-icon>
+    </ion-button>
+
+  </ion-buttons>
+</div>
+<div *ngIf="isLoggedIn">
+
+
+
+<!-- 
+  <div ngbDropdown class="float-right">
+    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+      <button (click)="goToUserProfile()" ngbDropdownItem>Profile</button>
+      <button (click)="logout()" ngbDropdownItem>Logout</button>
+    </div>
+    <button class="userdetails" id="dropdownBasic1" ngbDropdownToggle>
+      <img class="account-icon" src="https://www.redditstatic.com/avatars/avatar_default_08_D4E815.png">
+      {{username}}
+    </button> -->
+<!-- 
+    <a routerLink="/cart-details">
+      <div class="total">{{ totalPrice | currency: 'USD' }}
+        <span>{{ totalQuantity }}</span>
+      </div>
+      <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+    </a> -->
+  </div>

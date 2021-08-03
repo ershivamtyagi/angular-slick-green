@@ -1,0 +1,9 @@
+<ion-menu-toggle [autoHide]="false"  *ngFor="let tempProductCategory of productCategories" class="text-1x">
+<ion-item routerLink="/category/{{ tempProductCategory.id }}" routerLinkActive="active-link" button>
+  <!-- <ion-icon slot="start" name='home'></ion-icon> -->
+  <ion-label color="primary">
+    {{tempProductCategory.categoryName}}
+  </ion-label>
+</ion-item>
+
+</ion-menu-toggle>

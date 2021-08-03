@@ -1,5 +1,8 @@
 {
   "name": "angular-slick-green",
-  "integrations": {},
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
   "type": "angular"
 }

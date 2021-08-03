@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+       <ion-col sizeLg="6" sizeMd sizeSm><!-- offset="3"> -->
+      <img width="400" height="400" src="{{ product.imageUrl }}" class="detail-img">
+    </ion-col>
+    <ion-col sizeLg="6" offsetSm sizeMd sizeSm>
+      
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>
+              <ion-icon name="pricetags"></ion-icon> {{ product.unitPrice}} <i class="fa fa-rupee"></i>
+            </ion-card-subtitle>
+            <ion-card-title>
+              {{ product.name }}
+            </ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              {{ product.description }}
+              <ion-buttons>
+                <ion-button (click)="addToCart()" color="primary"><ion-icon color="success" name="cart-sharp"></ion-icon>  Add to cart</ion-button>
+              </ion-buttons>
+            </ion-card-content>
+   
+    </ion-card>
+      </ion-col>
+    </ion-row>
+    
+     
+      <ion-row>
+        <ion-col>
+      
+      <p>{{ product.description }}</p>
+          </ion-col>
+          </ion-row>
+      <a routerLink="/products" class="mt-5">Back to Product List</a>
+  </ion-grid>
+</ion-content>
