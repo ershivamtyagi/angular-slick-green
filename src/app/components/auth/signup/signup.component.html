@@ -1,62 +1,72 @@
-<ion-grid>
+<!-- <ion-grid>
   <ion-row>
-      <ion-col> 
-          <!-- size-md="6" offset-md="3"  -->
-          <ion-card>
-              <ion-card-header>
-                  <ion-card-title>Signup</ion-card-title>
-              </ion-card-header>
-              <ion-card-content>
-                  <form [formGroup]="signupForm" (ngSubmit)="signup()">
-                      <ion-item>
-                          <ion-label for="email_address" position="floating" >E-Mail
-                              Address</ion-label>
-                          <div class="col-md-6">
-                              <ion-input type="text" [formControlName]="'email'" id="email_address" class="form-control" name="email-address" required
-                                  autofocus></ion-input>
-                                                               
-                          </div>
-                      </ion-item>
-                    
-                        <span *ngIf="!signupForm.get('email').valid && signupForm.get('email').touched">
-                          Please provide a valid email
-                      </span>  
-                    
-                      <ion-item>
-                          <ion-label position="floating" class="">User Name</ion-label>
-                         
-                              <ion-input type="text" [formControlName]="'username'" required autofocus></ion-input>
-                                                              
-                          
-                      </ion-item>
-                      <span *ngIf="!signupForm.get('username').valid && signupForm.get('username').touched">
-                        Please provide a valid username
-                    </span> 
-                      <ion-item>
-                      </ion-item>
-                      <ion-item>
-                          <ion-label for="password" position="floating" class="">Password</ion-label>
-                         
-                              <ion-input type="password" [formControlName]="'password'" id="password" class="form-control" name="password" required></ion-input>
-                               
-                      </ion-item>
-                      
-                        <span slot="end" *ngIf="!signupForm.get('password').valid && signupForm.get('password').touched">
-                          Please provide a valid Password
-                      </span> 
-                      
+      <ion-col>  -->
+<!-- size-md="6" offset-md="3"  -->
+<!-- <ion-card> -->
+<ion-card-header>
+    <ion-card-title>Signup</ion-card-title>
+</ion-card-header>
+<ion-card-content>
+    <form [formGroup]="signupForm" (ngSubmit)="signup()">
+        <ion-item>
+            <ion-label for="email_address" position="floating"><ion-icon slot="start" name="mail-outline"></ion-icon> E-Mail
+                Address</ion-label>
+            <div class="col-md-6">
+                <ion-input type="text" [formControlName]="'email'" id="email_address" class="form-control"
+                    name="email-address" required autofocus></ion-input>
+
+            </div>
+        </ion-item>
+
+        <span *ngIf="!signupForm.get('email').valid && signupForm.get('email').touched">
+            Please provide a valid email
+        </span>
+
+        <ion-item>
+            <ion-label position="floating" class=""><ion-icon slot="start" name="person-outline"></ion-icon> User Name</ion-label>
+
+            <ion-input type="text" [formControlName]="'username'" required autofocus></ion-input>
 
 
-                     <div>
-                          <ion-button type="submit" color="success">
-                              Sign Up
-                          </ion-button>
-                          <span style="padding-left: 15px">Existing user? <a routerLink="/login">Log In</a></span>
-                        </div>
-                  </form>
-                </ion-card-content>
-              </ion-card>
+        </ion-item>
+        <span *ngIf="!signupForm.get('username').valid && signupForm.get('username').touched">
+            Please provide a valid username
+        </span>
+
+        <ion-item>
+            <ion-label for="password" position="floating" class=""><ion-icon slot="start" name="eye-outline"></ion-icon> Password</ion-label>
+
+            <ion-input type="password" [formControlName]="'password'" id="password" class="form-control" name="password"
+                required></ion-input>
+
+        </ion-item>
+
+        <span slot="end" *ngIf="!signupForm.get('password').valid && signupForm.get('password').touched">
+            Please provide a valid Password
+        </span>
+
+
+
+        <div>
+            <ion-row>
+                <ion-col>
+            <ion-button type="submit" expand="block" color="success">
+                Sign Up
+            </ion-button>
+        </ion-col>
+    </ion-row>
+        </div>
+
+    </form>
+    <ion-row>
+        <ion-col>
+            <span style="padding-left: 15px">Existing user? <a routerLink="/login">Log In</a></span>
+
+        </ion-col>
+    </ion-row>
+</ion-card-content>
+<!-- </ion-card>
               
           </ion-col>
       </ion-row>
-  </ion-grid>
+  </ion-grid> -->

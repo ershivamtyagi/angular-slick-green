@@ -18,7 +18,7 @@
                 <span ion-text color="light">Subscriber (2.0)</span>
               </ion-col>
             </ion-row>
-    
+            <div *ngIf="isLoggedIn">
             <ion-row  class="other-data ion-no-padding">
               <ion-col class="column  ion-no-padding">
                 <ion-button size="small" 
@@ -35,7 +35,7 @@
                 </ion-button>
               </ion-col>
             </ion-row>
-    
+    </div>
           </ion-grid>
         </ion-toolbar>
       </ion-header>
