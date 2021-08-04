@@ -70,6 +70,7 @@ export class AuthService {
       }, error => {
         throwError(error);
       });
+      this.loggedIn.emit(false);
     this.localStorage.clear('authenticationToken');
     this.localStorage.clear('username');
     this.localStorage.clear('refreshToken');

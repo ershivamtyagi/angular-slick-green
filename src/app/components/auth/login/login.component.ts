@@ -4,7 +4,7 @@ import { LoginRequestPayload } from './login-request.payload';
 
 import { Router, ActivatedRoute } from '@angular/router';
 import { throwError } from 'rxjs';
-import { ToastController } from '@ionic/angular';
+import { ToastController, PopoverController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth/shared/auth.service';
 
 @Component({
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   registerSuccessMessage: string;
   isError: boolean;
 
-  constructor(private authService: AuthService, private activatedRoute: ActivatedRoute,
+  constructor(private popoverController: PopoverController,private authService: AuthService, private activatedRoute: ActivatedRoute,
               private router: Router, private toastController: ToastController) {
     this.loginRequestPayload = {
       username: '',
@@ -57,7 +57,9 @@ export class LoginComponent implements OnInit {
     });
     toast.present();
   }
-
+  ClosePopover(){
+    this.popoverController.dismiss();
+  }
   login() {
     console.log('inside login()');
     this.loginRequestPayload.username = this.loginForm.get('username').value;
@@ -67,6 +69,7 @@ export class LoginComponent implements OnInit {
       this.isError = false;
       this.router.navigateByUrl('');
       this.presentSuccessLoginToast();
+      this.ClosePopover();
     }, error => {
       this.isError = true;
       throwError(error);

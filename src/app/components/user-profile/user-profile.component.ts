@@ -19,7 +19,10 @@ export class UserProfileComponent implements OnInit {
     // this.onDeleteRecipe();
     this.authService.loggedIn.subscribe((data: boolean) => this.isLoggedIn = data);
     this.authService.username.subscribe((data: string) => this.username = data);
-    this.isLoggedIn = this.authService.isLoggedIn();
+    // this.isLoggedIn = this.authService.isLoggedIn();
+    this.authService.loggedIn.subscribe(
+      data => this.isLoggedIn = data
+      );
     this.username = this.authService.getUserName();
     console.log(this.isLoggedIn+"isLoggedIn")
   }

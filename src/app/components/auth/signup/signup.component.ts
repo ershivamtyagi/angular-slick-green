@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SignupRequestPayload } from './singup-request.payload';
 
 import { Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
+import { ToastController, PopoverController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth/shared/auth.service';
 
 @Component({
@@ -16,7 +16,7 @@ export class SignupComponent implements OnInit {
   signupRequestPayload: SignupRequestPayload;
   signupForm: FormGroup;
 
-  constructor(private authService: AuthService, private router: Router, public toastController: ToastController) {
+  constructor(private popoverController:PopoverController,private authService: AuthService, private router: Router, public toastController: ToastController) {
     this.signupRequestPayload = {
       username: '',
       email: '',
@@ -31,7 +31,9 @@ export class SignupComponent implements OnInit {
       password: new FormControl('', Validators.required),
     });
   }
-
+  ClosePopover(){
+    this.popoverController.dismiss();
+  }
   signup() {
     this.signupRequestPayload.email = this.signupForm.get('email').value;
     this.signupRequestPayload.username = this.signupForm.get('username').value;
@@ -39,6 +41,7 @@ export class SignupComponent implements OnInit {
 
     this.authService.signup(this.signupRequestPayload)
       .subscribe(data => {
+        this.ClosePopover();
         this.router.navigate(['/login'],
           { queryParams: { registered: 'true' } });
       }, async error => {
@@ -49,7 +52,7 @@ export class SignupComponent implements OnInit {
             duration: 2000
           });
         toast.present();
-
+          this.ClosePopover();
       });
   }
 }
