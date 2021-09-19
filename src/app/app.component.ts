@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { Platform, NavController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { ThemeService } from './services/theme.service';
 import { AuthService } from './services/auth/shared/auth.service';
-import { Router } from '@angular/router';
+import { Router, Data, ActivatedRoute } from '@angular/router';
+import { ProductService } from './services/product.service';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,8 @@ import { Router } from '@angular/router';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+  
+  
   isLoggedIn: boolean;
   username: string;
   constructor(
@@ -20,8 +23,8 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private themeService: ThemeService,
-    private authService: AuthService, private router: Router
-  ) {
+    private authService: AuthService, private router: Router,private productService:ProductService
+  ,private route: ActivatedRoute) {
     this.initializeApp();
     this.isLoggedIn = this.authService.isLoggedIn();
     
@@ -31,6 +34,7 @@ export class AppComponent {
     this.username = this.authService.getUserName();
   }
 
+ 
   goToUserProfile() {
     console.log('goToUserProfile');
     this.router.navigateByUrl('/user-profile/' + this.username);
@@ -41,6 +45,10 @@ export class AppComponent {
     this.isLoggedIn = false;
     this.router.navigateByUrl('');
   }
+  
+currentCategoryId: number;
+
+
 
   changeTheme(eevnt){
     console.log("===>"+eevnt.detail.checked);

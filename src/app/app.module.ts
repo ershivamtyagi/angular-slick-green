@@ -18,9 +18,10 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { WebIntent } from '@ionic-native/web-intent/ngx';
 import { CartStatusComponent } from './components/cart-status/cart-status.component';
+import { SearchComponent } from './components/search/search.component';
 @NgModule({
   declarations: [AppComponent, ProductCategoryMenuComponent, UserProfileComponent, LoginComponent, SignupComponent,ProductListComponent,
-  ProductDetailsComponent, CartStatusComponent],
+  ProductDetailsComponent, CartStatusComponent,SearchComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, NgxWebstorageModule.forRoot(), ReactiveFormsModule,
     ],

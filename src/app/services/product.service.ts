@@ -15,6 +15,14 @@ export class ProductService {
     console.log(productUrl)
     return this.httpClient.get<Product>(productUrl);
   }
+  
+  getProductDetailsBySearchName(theProductName: string) :Observable<GetResponseProducts>{
+    // need to build URL based on category id, page and size 
+    const searchUrl = `${this.baseUrl}/search/findByNameContaining?name=${theProductName}`
+                    + `&page=0&size=5`;
+                    console.log(searchUrl);
+    return this.httpClient.get<GetResponseProducts>(searchUrl);
+  }
   saveSearch(saveSearchRequestPayload: any) {
     throw new Error("Method not implemented.");
   }
@@ -26,6 +34,27 @@ export class ProductService {
                     + `&page=1&size=5`;
     return this.httpClient.get<GetResponseProducts>(searchUrl);
   }
+  searchProductsPaginate(thePage: number,
+    thePageSize: number,
+    theKeyword: string): Observable<GetResponseProducts> {
+
+// need to build URL based on keyword, page and size
+const searchUrl = `${this.baseUrl}/search/findByNameContaining?name=${theKeyword}`
++ `&page=${thePage}&size=${thePageSize}`;
+console.log(searchUrl);
+return this.httpClient.get<GetResponseProducts>(searchUrl);
+}
+
+  getProductListPaginate(thePage: number,
+    thePageSize: number,
+    theCategoryId: number): Observable<GetResponseProducts> {
+
+// need to build URL based on category id, page and size
+const searchUrl = `${this.baseUrl}/search/findByCategoryId?id=${theCategoryId}`
++ `&page=${thePage}&size=${thePageSize}`;
+
+return this.httpClient.get<GetResponseProducts>(searchUrl);
+}
 
   private categoryUrl = 'http://localhost:8080/api/product-category';
   //private categoryUrl = 'http://ec2-3-14-83-169.us-east-2.compute.amazonaws.com:8080/api/product-category';

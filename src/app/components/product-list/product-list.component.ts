@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
+import { Product } from 'src/app/common/product';
 
 @Component({
   selector: 'app-product-list',
@@ -9,21 +10,59 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductListComponent implements OnInit {
   currentCategoryId: number;
-  products: any;
+  products:Product[] = [];
   thePageNumber: any;
   thePageSize: any;
   theTotalElements: any;
   saveSearchRequestPayload: { username: any; keyword: string; };
   username: any;
+  previousKeyword: string;
 
   constructor(private route:ActivatedRoute,private productService:ProductService) { }
 
   ngOnInit() {
-    this.handleListComponents();
+    this.route.paramMap.subscribe(() => {
+      this.listProducts();
+    });
+   
   }
+  
+  searchMode: boolean = false;
+  listProducts() {
 
+    this.searchMode = this.route.snapshot.paramMap.has('keyword');
 
-  handleListComponents(){
+    if (this.searchMode) {
+      this.handleSearchProducts();
+    }
+    else {
+      this.handleListProducts();
+    }
+
+  }
+  
+  handleSearchProducts() {
+
+    const theKeyword: string = this.route.snapshot.paramMap.get('keyword');
+
+    // if we have a different keyword than previous
+    // then set thePageNumber to 1
+
+    if (this.previousKeyword != theKeyword) {
+      this.thePageNumber = 1;
+    }
+
+    this.previousKeyword = theKeyword;
+
+    console.log(`keyword=${theKeyword}, thePageNumber=${this.thePageNumber}`);
+
+    // now search for the products using keyword
+    this.productService.searchProductsPaginate(this.thePageNumber - 1,
+                                               this.thePageSize,
+                                               theKeyword).subscribe(this.processResult());
+                                               
+  }
+  handleListProducts(){
     //check if 'id' parameter is available
     const hasCategoryId = this.route.snapshot.paramMap.has('id');
     if(hasCategoryId){
@@ -38,6 +77,12 @@ export class ProductListComponent implements OnInit {
     // get the product list for given CategoryId
     this.productService.getProductList(this.currentCategoryId).subscribe(this.processResult());
   }
+  setFilteredItems(eevnt) {
+    const query = eevnt.detail.value.trimStart();
+    console.log("I am in"+eevnt.detail.value.trimStart());
+    this.productService.getProductDetailsBySearchName(query).subscribe(this.processResult());
+  
+}
   processResult() {
     return data => {
       this.products = data._embedded.products;
@@ -45,7 +90,7 @@ export class ProductListComponent implements OnInit {
       this.thePageSize = data.page.size;
       this.theTotalElements = data.page.totalElements;
       const theKeyword: string = this.route.snapshot.paramMap.get('keyword');
-
+      console.log("Products = "+this.products)
       if(this.products.length == 0 && theKeyword!=null){
        
         console.log('No product found'+theKeyword);

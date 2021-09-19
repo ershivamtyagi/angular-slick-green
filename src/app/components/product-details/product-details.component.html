@@ -4,11 +4,12 @@
 <ion-content>
   <ion-grid>
     <ion-row>
-       <ion-col sizeLg="6" sizeMd sizeSm><!-- offset="3"> -->
-      <img width="400" height="400" src="{{ product.imageUrl }}" class="detail-img">
-    </ion-col>
-    <ion-col sizeLg="6" offsetSm sizeMd sizeSm>
-      
+      <ion-col sizeLg="6" sizeMd sizeSm>
+        <!-- offset="3"> -->
+        <img width="400" height="400" src="{{ product.imageUrl }}" class="detail-img">
+      </ion-col>
+      <ion-col sizeLg="6" offsetSm sizeMd sizeSm>
+
         <ion-card>
           <ion-card-header>
             <ion-card-subtitle>
@@ -17,25 +18,32 @@
             <ion-card-title>
               {{ product.name }}
             </ion-card-title>
-            </ion-card-header>
-            <ion-card-content>
-              {{ product.description }}
-              <ion-buttons>
-                <ion-button (click)="addToCart()" color="primary"><ion-icon color="success" name="cart-sharp"></ion-icon>  Add to cart</ion-button>
-              </ion-buttons>
-            </ion-card-content>
-   
-    </ion-card>
+          </ion-card-header>
+          <ion-card-content>
+            {{ product.description }}
+            <ion-buttons>
+              <ion-button (click)="addToCart()" color="primary">
+                <ion-icon color="success" name="cart-sharp"></ion-icon> Add to cart
+              </ion-button>
+            </ion-buttons>
+          </ion-card-content>
+
+        </ion-card>
       </ion-col>
     </ion-row>
-    
-     
-      <ion-row>
-        <ion-col>
-      
-      <p>{{ product.description }}</p>
-          </ion-col>
-          </ion-row>
-      <a routerLink="/products" class="mt-5">Back to Product List</a>
+
+
+    <ion-row>
+      <ion-col>
+
+        <p>{{ product.description }}</p>
+
+      </ion-col>
+      <ion-col>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/1ozGKlOzEVc" frameborder="0" allowfullscreen></iframe>
+   
+      </ion-col>
+    </ion-row>
+    <a routerLink="/products" class="mt-5">Back to Product List</a>
   </ion-grid>
 </ion-content>
