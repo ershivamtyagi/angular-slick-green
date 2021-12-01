@@ -18,6 +18,9 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { NgModule } from '@angular/core';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { ExcersizeHistoryComponent } from './components/excersize-history/excersize-history.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
   // { path: '', component: HomeComponent },
@@ -30,6 +33,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   //  {path: 'cart-details', component: CartDetailsComponent},
   {path: 'products/:id', component: ProductDetailsComponent},
+  {path: 'demo/:userId/:excersizeId', component: ExcersizeHistoryComponent},
   {path: 'search/:keyword', component: ProductListComponent},
   {path: 'category/:id', component: ProductListComponent},
   {path: 'category', component: ProductListComponent},
@@ -41,6 +45,8 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
+    CommonModule,
+    BrowserModule,
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
   ],
   exports: [RouterModule]

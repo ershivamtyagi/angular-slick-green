@@ -1,0 +1,27 @@
+
+<ion-list>
+  <ion-item *ngFor='let tempProduct of products' [routerLink]="['/products',tempProduct.id]">
+    <ion-avatar slot="start" *ngFor='let t of tempProduct'>
+      <!-- <ion-img [src]='tempProduct.imageUrl'></ion-img>  -->
+       {{ t.id}}
+    </ion-avatar>
+    <ion-label>
+      <!-- {{ tempProduct.name}} -->
+    </ion-label>
+    
+    <!-- <div class="product-box"> -->
+
+      <!-- <a routerLink="/products/{{ tempProduct.id }}">
+          <img src="{{ tempProduct.imageUrl }}" class="img-responsive">
+      </a> -->
+
+      <!-- <a routerLink="/products/{{ tempProduct.id }}">
+          <h1>{{ tempProduct.name }}</h1>
+      </a> -->
+      
+      <!-- <div class="price">{{ tempProduct.unitPrice | currency:'USD' }}</div>
+      <button (click)="addToCart(tempProduct)" class="btn btn-primary btn-sm">Add to cart</button>
+  </div> -->
+
+  </ion-item>
+</ion-list>
