@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { ExcersizeHistory } from 'src/app/common/excersize-history';
+import { Excersizes } from 'src/app/common/excersizes';
+import { ListOfExersizes } from 'src/app/common/list-of-exersizes';
 
 @Component({
   selector: 'app-excersize-history',
@@ -12,13 +12,13 @@ import { ExcersizeHistory } from 'src/app/common/excersize-history';
 export class ExcersizeHistoryComponent implements OnInit {
 
   constructor(private route:ActivatedRoute, private httpClient: HttpClient) { }
-  products:Array<ExcersizeHistory[]> ;
+  products: Excersizes[] ;
   ngOnInit() {
     this.route.paramMap.subscribe(() => {
       this.getHistory();
     });
   }
-
+  
   private baseUrl1 = 'http://localhost:8080/getExcersizeHistory';
   id: number ;
   eID: number;
@@ -27,12 +27,13 @@ export class ExcersizeHistoryComponent implements OnInit {
     this.eID = +this.route.snapshot.paramMap.get('excersizeId');
     console.log(this.id+":is userId,"+this.eID+":is eid");
    
-     this.httpClient.get<Array<ExcersizeHistory[]>>(`${this.baseUrl1}/${this.id}/${this.eID}`).subscribe(this.processResult());
+     this.httpClient.get<Excersizes>(`${this.baseUrl1}/${this.id}/${this.eID}`).subscribe(this.processResult());
   }
   processResult() {
     return data => {
-      console.log(data);
-      this.products = data;
+      
+      this.products = data.excersizesList;
+      console.log(JSON.stringify(this.products));
     };
   }
 }
