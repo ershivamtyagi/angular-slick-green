@@ -31,7 +31,8 @@ export class ProductService {
   getProductList(theCategoryId: number) :Observable<GetResponseProducts>{
     // need to build URL based on category id, page and size 
     const searchUrl = `${this.baseUrl}/search/findByCategoryId?id=${theCategoryId}`
-                    + `&page=1&size=5`;
+                    + `&page=0&size=5`;
+                    console.log(searchUrl+" *********")
     return this.httpClient.get<GetResponseProducts>(searchUrl);
   }
   searchProductsPaginate(thePage: number,

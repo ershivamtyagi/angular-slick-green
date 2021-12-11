@@ -5,6 +5,8 @@ import { Product } from 'src/app/common/product';
 import { WebIntent } from '@ionic-native/web-intent/ngx';
 import { CartItem } from 'src/app/common/cart-item';
 import { CartService } from 'src/app/services/cart.service';
+import { DomSanitizer} from '@angular/platform-browser';
+
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
@@ -12,8 +14,9 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class ProductDetailsComponent implements OnInit {
   product: Product = new Product();
-  constructor(private webIntent: WebIntent,private route: ActivatedRoute,private productService: ProductService,private cartService: CartService) { }
-
+  constructor(private sanitizer: DomSanitizer,private webIntent: WebIntent,private route: ActivatedRoute,private productService: ProductService,private cartService: CartService) { }
+  controllerSrc: any;
+  
   ngOnInit() {
     this.fetchProductDetails();
   }
@@ -23,9 +26,12 @@ export class ProductDetailsComponent implements OnInit {
     console.log("ID = "+productId);
     this.productService.getProductDetails(productId).subscribe(data=>{
       this.product= data;
+      this.controllerSrc = this.sanitizer.bypassSecurityTrustResourceUrl(this.product.sku);
+      console.log("========"+this.controllerSrc);
       console.log("product = "+this.product);
     });
   }
+ 
 
   addToCart(){
     console.log(`Adding to cart: ${this.product.name}, ${this.product.unitPrice}`);
