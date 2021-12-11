@@ -27,6 +27,9 @@ export class ProductService {
     throw new Error("Method not implemented.");
   }
   private baseUrl = 'http://localhost:8080/api/products';
+
+
+
  // private baseUrl = 'http://ec2-3-14-83-169.us-east-2.compute.amazonaws.com:8080/api/products';
   getProductList(theCategoryId: number) :Observable<GetResponseProducts>{
     // need to build URL based on category id, page and size 
