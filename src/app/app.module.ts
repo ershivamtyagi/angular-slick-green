@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
@@ -16,13 +16,15 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
-import { WebIntent } from '@ionic-native/web-intent/ngx';
 import { CartStatusComponent } from './components/cart-status/cart-status.component';
 import { SearchComponent } from './components/search/search.component';
 import { ExcersizeHistoryComponent } from './components/excersize-history/excersize-history.component';
+import { ExcersizeListComponent } from './components/excersize-list/excersize-list.component';
+import { UserProgramsComponent } from './components/user-programs/user-programs.component';
+import { TokenInterceptor } from './token-interceptor';
 @NgModule({
   declarations: [AppComponent, ProductCategoryMenuComponent, UserProfileComponent, LoginComponent, SignupComponent,ProductListComponent,
-  ProductDetailsComponent, CartStatusComponent,SearchComponent , ExcersizeHistoryComponent],
+  ProductDetailsComponent, CartStatusComponent,SearchComponent , ExcersizeHistoryComponent, ExcersizeListComponent, UserProgramsComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, NgxWebstorageModule.forRoot(), ReactiveFormsModule,
     ],
@@ -30,7 +32,11 @@ import { ExcersizeHistoryComponent } from './components/excersize-history/excers
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    WebIntent
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

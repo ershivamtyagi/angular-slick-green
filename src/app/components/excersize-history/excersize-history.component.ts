@@ -19,7 +19,7 @@ export class ExcersizeHistoryComponent implements OnInit {
     });
   }
   
-  private baseUrl1 = 'http://localhost:8080/getExcersizeHistory';
+  private baseUrl1 = 'http://localhost:8080/api/excersizeHistory/getExcersizeHistory';
   id: number ;
   eID: number;
   getHistory(){

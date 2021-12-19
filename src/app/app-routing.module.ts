@@ -21,6 +21,8 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import { ExcersizeHistoryComponent } from './components/excersize-history/excersize-history.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import { ExcersizeListComponent } from './components/excersize-list/excersize-list.component';
+import { UserProgramsComponent } from './components/user-programs/user-programs.component';
 
 const routes: Routes = [
   // { path: '', component: HomeComponent },
@@ -36,8 +38,10 @@ const routes: Routes = [
   {path: 'demo/:userId/:excersizeId', component: ExcersizeHistoryComponent},
   {path: 'search/:keyword', component: ProductListComponent},
   {path: 'category/:id', component: ProductListComponent},
+  {path: 'userPrograms', component: UserProgramsComponent},
   {path: 'category', component: ProductListComponent},
   {path: 'products', component: ProductListComponent},
+  {path: 'excersizes', component: ExcersizeListComponent},
   {path: '', redirectTo: '/products', pathMatch: 'full'},
   {path: '**', redirectTo: '/products', pathMatch: 'full'}
 

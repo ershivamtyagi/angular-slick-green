@@ -1,0 +1,37 @@
+<ion-content>
+  <ion-list>
+    <form [formGroup]="programCreationForm" (ngSubmit)="saveProgram()">
+      <ion-item-sliding>
+        <ion-label>Enter Program Name</ion-label>
+        <ion-input class="form-control" [formControlName]="'programName'" name="program-name" required autofocus></ion-input>
+        <span *ngIf="!programCreationForm.get('programName').valid && programCreationForm.get('programName').touched">
+          Please provide a valid program Name
+      </span>
+      </ion-item-sliding>
+      <ion-item *ngFor="let e of products">
+        <ion-label>
+          <ion-grid>
+            <ion-row>
+              <ion-col>{{ e.name }}</ion-col>
+              <ion-col> {{e.mainMuscleGrp}}</ion-col>
+
+            </ion-row>
+          </ion-grid>
+        </ion-label>
+        <!-- <ion-input slot="end"></ion-input> -->
+        <ion-toggle (ionChange)="update_state($event,e.id)" id="{{ e.name }}" slot="end"></ion-toggle>
+        <!-- <ion-radio slot="end"></ion-radio> -->
+        <!-- <ion-checkbox slot="start"></ion-checkbox> -->
+      </ion-item>
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col> <ion-button type="submit" color="success">
+              Done
+          </ion-button></ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </form>
+  </ion-list>
+</ion-content>
