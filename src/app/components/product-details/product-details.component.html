@@ -4,15 +4,11 @@
 <ion-content>
   <ion-grid>
     <ion-row>
-      <ion-col>
+      <ion-col sizeLg="6" sizeMd sizeSm>
         <!-- offset="3"> -->
-        <iframe width="560" height="315"  src="{{controllerSrc}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        
-        <!-- <iframe width="400" height="400" src="{{ product.sku }}" frameborder="0" allowfullscreen></iframe>
-    -->
-        <!-- <img width="400" height="400" src="{{ product.imageUrl }}" class="detail-img">-->
-      </ion-col> 
-      <!-- <ion-col>
+        <img width="400" height="400" src="{{ product.imageUrl }}" class="detail-img">
+      </ion-col>
+      <ion-col sizeLg="6" offsetSm sizeMd sizeSm>
 
         <ion-card>
           <ion-card-header>
@@ -33,11 +29,11 @@
           </ion-card-content>
 
         </ion-card>
-      </ion-col> -->
+      </ion-col>
     </ion-row>
 
 
-    <!-- <ion-row>
+    <ion-row>
       <ion-col>
 
         <p>{{ product.description }}</p>
@@ -47,7 +43,7 @@
         <iframe width="560" height="315" src="https://www.youtube.com/embed/1ozGKlOzEVc" frameborder="0" allowfullscreen></iframe>
    
       </ion-col>
-    </ion-row> -->
+    </ion-row>
     <a routerLink="/products" class="mt-5">Back to Product List</a>
   </ion-grid>
 </ion-content>

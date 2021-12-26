@@ -23,11 +23,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { ExcersizeListComponent } from './components/excersize-list/excersize-list.component';
 import { UserProgramsComponent } from './components/user-programs/user-programs.component';
+import { UserProgramDetailComponent } from './components/user-program-detail/user-program-detail.component';
+import { AssignProgramToUserComponent } from './components/assign-program-to-user/assign-program-to-user.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { AuthGuard } from './components/auth/auth.guard';
+import { UserSettingComponent } from './components/user-setting/user-setting.component';
 
 const routes: Routes = [
   // { path: '', component: HomeComponent },
   // { path: 'view-post/:id', component: ViewPostComponent },
- // { path: 'user-profile/:name', component: UserProfileComponent, canActivate: [AuthGuard] },
+  { path: 'user-profile/:name', component: UserSettingComponent, canActivate: [AuthGuard] },
   // { path: 'list-subreddits', component: ListSubredditsComponent },
   // { path: 'create-post', component: CreatePostComponent, canActivate: [AuthGuard] },
   // { path: 'create-subreddit', component: CreateSubredditComponent, canActivate: [AuthGuard] },
@@ -39,9 +44,11 @@ const routes: Routes = [
   {path: 'search/:keyword', component: ProductListComponent},
   {path: 'category/:id', component: ProductListComponent},
   {path: 'userPrograms', component: UserProgramsComponent},
+  {path: 'userPrograms/:id', component: UserProgramDetailComponent},
   {path: 'category', component: ProductListComponent},
   {path: 'products', component: ProductListComponent},
   {path: 'excersizes', component: ExcersizeListComponent},
+  {path: 'assignProgramToUser', component: AssignProgramToUserComponent},
   {path: '', redirectTo: '/products', pathMatch: 'full'},
   {path: '**', redirectTo: '/products', pathMatch: 'full'}
 

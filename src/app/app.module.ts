@@ -22,15 +22,21 @@ import { ExcersizeHistoryComponent } from './components/excersize-history/excers
 import { ExcersizeListComponent } from './components/excersize-list/excersize-list.component';
 import { UserProgramsComponent } from './components/user-programs/user-programs.component';
 import { TokenInterceptor } from './token-interceptor';
+import { UserProgramDetailComponent } from './components/user-program-detail/user-program-detail.component';
+import { AssignProgramToUserComponent } from './components/assign-program-to-user/assign-program-to-user.component';
+import { WebIntent } from '@ionic-native/web-intent/ngx';
+import { UserSettingComponent } from './components/user-setting/user-setting.component';
 @NgModule({
   declarations: [AppComponent, ProductCategoryMenuComponent, UserProfileComponent, LoginComponent, SignupComponent,ProductListComponent,
-  ProductDetailsComponent, CartStatusComponent,SearchComponent , ExcersizeHistoryComponent, ExcersizeListComponent, UserProgramsComponent],
+  ProductDetailsComponent, CartStatusComponent,SearchComponent , ExcersizeHistoryComponent, ExcersizeListComponent, UserProgramsComponent,
+  UserProgramDetailComponent,AssignProgramToUserComponent,UserSettingComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, NgxWebstorageModule.forRoot(), ReactiveFormsModule,
     ],
   providers: [
     StatusBar,
     SplashScreen,
+    WebIntent,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {
       provide: HTTP_INTERCEPTORS,

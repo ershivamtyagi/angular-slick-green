@@ -3,8 +3,19 @@
     <ion-searchbar (ionChange)="setFilteredItems($event)"></ion-searchbar>
    
         </ion-toolbar> -->
-  <ion-toolbar color='primary'>
+  <!-- <ion-toolbar color='primary'>
     <ion-title>Products</ion-title>
+  </ion-toolbar> -->
+  <ion-toolbar color='secondry'>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/recipes"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Products</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button>
+        <ion-icon name="trash"></ion-icon></ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -41,6 +52,8 @@
 <a routerLink="/excersizes">Create Program</a>
 <br>
 <a routerLink="/userPrograms">My Program</a>
+<br>
+<a routerLink="/assignProgramToUser">Assign Program to User</a>
 <!---->
 <div class="featured-courses">
   <ion-list-header class="list-header-custom no-padding">

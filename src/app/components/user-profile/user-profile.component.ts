@@ -19,23 +19,20 @@ export class UserProfileComponent implements OnInit {
     // this.onDeleteRecipe();
     this.authService.loggedIn.subscribe((data: boolean) => this.isLoggedIn = data);
     this.authService.username.subscribe((data: string) => this.username = data);
-    // this.isLoggedIn = this.authService.isLoggedIn();
-    this.authService.loggedIn.subscribe(
-      data => this.isLoggedIn = data
-      );
+     this.isLoggedIn = this.authService.isLoggedIn();
     this.username = this.authService.getUserName();
-    console.log(this.isLoggedIn+"isLoggedIn")
+    console.log(this.isLoggedIn+" for isLoggedIn")
   }
 
-  goToUserProfile() {
-    console.log("s");
-    this.router.navigateByUrl('/user-profile/' + this.username);
-  }
-  logout() {
-    this.authService.logout();
-    this.isLoggedIn = false;
-    this.router.navigateByUrl('');
-  }
+  // goToUserProfile() {
+  //   console.log("s");
+  //   this.router.navigateByUrl('/user-profile/' + this.username);
+  // }
+  // logout() {
+  //   this.authService.logout();
+  //   this.isLoggedIn = false;
+  //   this.router.navigateByUrl('');
+  // }
   // onDeleteRecipe(){
   //   this.alertCtrl.create({header: 'Are you sure?',message:'Do you really want to delete the recipe?',buttons:[{
   //     text:'Cancel',

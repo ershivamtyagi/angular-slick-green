@@ -1,5 +1,5 @@
 <ion-content>
-    <ion-card *ngFor="let e of products">
+    <ion-card *ngFor="let e of products" [routerLink]="['/userPrograms',e.id]">
         <ion-item>
             <ion-label>
                 <ion-grid>

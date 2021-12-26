@@ -1,0 +1,21 @@
+<ion-content>
+  <form [formGroup]="programToUserForm" (ngSubmit)="assignProgramToUser()">
+    
+      <ion-label>Enter Program Id :</ion-label>
+      <ion-input class="form-control" [formControlName]="'programId'" required autofocus></ion-input>
+      <span *ngIf="!programToUserForm.get('programId').valid && programToUserForm.get('programId').touched">
+        Please provide a valid program Id
+      </span>
+      <ion-label>Enter User Name :</ion-label>
+      <ion-input class="form-control" [formControlName]="'username'" required autofocus></ion-input>
+      <span *ngIf="!programToUserForm.get('username').valid && programToUserForm.get('username').touched">
+        Please provide a valid username
+      </span>
+    <ion-item>
+      <ion-button type="submit" color="success">
+        Done</ion-button>
+
+    </ion-item>
+  </form>
+
+</ion-content>
