@@ -1,0 +1,79 @@
+<ion-content>
+  <ion-card *ngFor="let e of products">
+    <div *ngIf="category=='D'">
+      <ion-item [routerLink]="['/showWorkoutDetail',e.id]">
+        <ion-col>{{e.name}}</ion-col>
+      </ion-item>
+        <ion-item>
+            <ion-label>
+                <ion-grid>
+                    <ion-row>
+                        <!-- <ion-col></ion-col> -->
+                        <ion-col  size="6">Diet Name</ion-col>
+                        <ion-col> Calory</ion-col>
+                         <ion-col><ion-toggle></ion-toggle></ion-col> 
+                    </ion-row>
+                </ion-grid>
+            </ion-label>
+            <!-- <ion-button fill="outline" slot="end">View</ion-button>-->
+        </ion-item>
+        <ion-card-content>
+            <ion-grid>
+                <div *ngFor="let e1 of e.ingridiences">
+  
+                    <ion-row>
+                        <!-- <ion-col>{{ e1.id }}</ion-col> -->
+                        
+                        
+                        <ion-col  size="6">{{ e1.name }}({{e1.quantity}})</ion-col>
+                        <ion-col>{{ e1.calory }} </ion-col>
+                       
+                        <ion-col><ion-toggle></ion-toggle></ion-col> 
+                       
+  
+                    </ion-row>
+                </div>
+            </ion-grid>
+        </ion-card-content>
+      
+    </div>
+    <div *ngIf="category=='W'">
+    <ion-item [routerLink]="['/showWorkoutDetail',e.id]">
+      <ion-col>{{e.name}}</ion-col>
+    </ion-item>
+      <ion-item>
+          <ion-label>
+              <ion-grid>
+                  <ion-row>
+                      <!-- <ion-col></ion-col> -->
+                      <ion-col>Weight</ion-col>
+                      <ion-col>Rest</ion-col>
+                      <ion-col> Reps</ion-col>
+                       <!-- <ion-col><ion-toggle></ion-toggle></ion-col>  -->
+                  </ion-row>
+              </ion-grid>
+          </ion-label>
+          <!-- <ion-button fill="outline" slot="end">View</ion-button>-->
+      </ion-item>
+      <ion-card-content>
+          <ion-grid>
+              <div *ngFor="let e1 of e.sets">
+
+                  <ion-row class="input">
+                      <!-- <ion-col>{{ e1.id }}</ion-col> -->
+                      <ion-col><ion-input value= (ionChange)="getMe($event,e1)"></ion-input></ion-col>
+                      <ion-col>{{ e1.rest }} </ion-col>
+                      <ion-col>{{ e1.reps }}</ion-col>
+                      <!-- <ion-col><ion-toggle></ion-toggle></ion-col> -->
+
+                  </ion-row>
+              </div>
+  
+          </ion-grid>
+      </ion-card-content>
+      
+    </div>
+    
+  </ion-card>
+  <ion-col><ion-button  (click)="save()">Save</ion-button></ion-col>
+</ion-content>

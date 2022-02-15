@@ -28,6 +28,8 @@ import { AssignProgramToUserComponent } from './components/assign-program-to-use
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { AuthGuard } from './components/auth/auth.guard';
 import { UserSettingComponent } from './components/user-setting/user-setting.component';
+import { ShowWorkoutComponent } from './components/show-workout/show-workout.component';
+import { ShowWorkoutDetailsComponent } from './components/show-workout-details/show-workout-details.component';
 
 const routes: Routes = [
   // { path: '', component: HomeComponent },
@@ -43,6 +45,8 @@ const routes: Routes = [
   {path: 'demo/:userId/:excersizeId', component: ExcersizeHistoryComponent},
   {path: 'search/:keyword', component: ProductListComponent},
   {path: 'category/:id', component: ProductListComponent},
+  {path: 'showWorkout/:categoryId', component: ShowWorkoutComponent},
+  {path: 'showWorkoutDetail/:id', component: ShowWorkoutDetailsComponent},
   {path: 'userPrograms', component: UserProgramsComponent},
   {path: 'userPrograms/:id', component: UserProgramDetailComponent},
   {path: 'category', component: ProductListComponent},

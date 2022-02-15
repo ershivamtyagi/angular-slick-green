@@ -11,7 +11,7 @@ import { Program } from 'src/app/common/program';
 export class UserProgramsComponent implements OnInit {
 
   constructor(private route:ActivatedRoute, private httpClient: HttpClient) { }
-  products: Program[] ;
+  products: Object[] ;
   ngOnInit() {
     this.route.paramMap.subscribe(() => {
       this.getPrograms();
@@ -19,7 +19,7 @@ export class UserProgramsComponent implements OnInit {
   }
   private baseUrl1 = 'http://localhost:8080/api/programs/getUserPrograms';
   getPrograms() {
-    this.httpClient.get<Program[]>(`${this.baseUrl1}`).subscribe(this.processResult());
+    this.httpClient.get<Object[]>(`${this.baseUrl1}`).subscribe(this.processResult());
   }
   processResult() {
     return data => {

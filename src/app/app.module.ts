@@ -26,10 +26,12 @@ import { UserProgramDetailComponent } from './components/user-program-detail/use
 import { AssignProgramToUserComponent } from './components/assign-program-to-user/assign-program-to-user.component';
 import { WebIntent } from '@ionic-native/web-intent/ngx';
 import { UserSettingComponent } from './components/user-setting/user-setting.component';
+import { ShowWorkoutComponent } from './components/show-workout/show-workout.component';
+import { ShowWorkoutDetailsComponent } from './components/show-workout-details/show-workout-details.component';
 @NgModule({
   declarations: [AppComponent, ProductCategoryMenuComponent, UserProfileComponent, LoginComponent, SignupComponent,ProductListComponent,
   ProductDetailsComponent, CartStatusComponent,SearchComponent , ExcersizeHistoryComponent, ExcersizeListComponent, UserProgramsComponent,
-  UserProgramDetailComponent,AssignProgramToUserComponent,UserSettingComponent],
+  UserProgramDetailComponent,AssignProgramToUserComponent,UserSettingComponent,ShowWorkoutComponent,ShowWorkoutDetailsComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, NgxWebstorageModule.forRoot(), ReactiveFormsModule,
     ],

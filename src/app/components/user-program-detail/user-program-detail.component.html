@@ -1,46 +1,51 @@
-
 <ion-content>
-  <ion-card *ngFor="let e of products">
-   
+  <ion-list>
+
+    <ion-item class="select-box">
+      <ion-label>Week</ion-label>
+      <ion-select value="1" placeholder="Select One" (ionChange)="callme($event)">
+        <ion-select-option value="1">1</ion-select-option>
+        <ion-select-option value="2">2</ion-select-option>
+        <ion-select-option value="3">3</ion-select-option>
+        <ion-select-option value="4">4</ion-select-option>
+        <ion-select-option value="5">5</ion-select-option>
+        <ion-select-option value="6">6</ion-select-option>
+        <ion-select-option value="7">7</ion-select-option>
+        <ion-select-option value="8">8</ion-select-option>
+        <ion-select-option value="9">9</ion-select-option>
+        <ion-select-option value="10">10</ion-select-option>
+        <ion-select-option value="10">11</ion-select-option>
+        <ion-select-option value="10">12</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+  </ion-list>
+  <!-- <div *ngFor="let e of products | keyvalue: asIsOrder">
+    <ion-item>Day {{e.key}}</ion-item>
+  <ion-card *ngFor="let e1 of e.value" [routerLink]="['/showWorkout',e1.categoryId]" [queryParams]="{category: e1.category}">
       <ion-item>
-        <ion-label>
-          <ion-grid>
-            <ion-row>
-              <ion-col>{{e.name}}</ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col>Weight</ion-col>
-              <ion-col>Reps</ion-col>
-              <ion-col>Rest</ion-col>
-              <ion-col><ion-toggle></ion-toggle> </ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-label>
-        <!-- <ion-input slot="end"></ion-input> -->
-        <!-- <ion-toggle (ionChange)="update_state($event,e.id)" id="{{ e.name }}" slot="end"></ion-toggle> -->
-        <!-- <ion-radio slot="end"></ion-radio> -->
-        <!-- <ion-checkbox slot="start"></ion-checkbox> -->
-      </ion-item>
-      <ion-card-content>
-        <ion-grid>
-            <div *ngFor="let e1 of e.sets">
-                <ion-row>
-                    <ion-col>{{ e1.weight }} Kg</ion-col>
-                    <ion-col>{{ e1.reps }}</ion-col>
-                    <ion-col>{{ e1.rest }}</ion-col>
-                    <ion-col><ion-toggle></ion-toggle> </ion-col>
-                </ion-row>
-            </div>
-        </ion-grid>
-    </ion-card-content>
-      <ion-item>
-        <ion-grid>
-          <ion-row>
-            <ion-col> <ion-button type="submit" color="success">
-              Done
-          </ion-button></ion-col>
-          </ion-row>
-        </ion-grid>
+              <ion-col>{{e1.name}}</ion-col>
       </ion-item>
   </ion-card>
+</div> -->
+  <div *ngFor="let e of products | keyvalue: asIsOrder">
+    <ion-item>Day {{e.key}}</ion-item>
+    <div class="plan-list">
+      <div *ngFor="let e1 of e.value">
+        <div  class="plan-item color-2"  *ngIf="e1.category=='W'" [routerLink]="['/showWorkout',e1.categoryId]"
+          [queryParams]="{category: e1.category}">
+          <div class="plan-title">
+            {{e1.name}}
+          </div>
+        </div>
+        
+        <div  class="plan-item color-1"  *ngIf="e1.category=='D'" [routerLink]="['/showWorkout',e1.categoryId]"
+        [queryParams]="{category: e1.category}">
+        <div class="plan-title">
+          {{e1.name}}
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
 </ion-content>

@@ -7,6 +7,7 @@ import { ProgramRequestPayload } from 'src/app/common/program-request.payload';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ToastController } from '@ionic/angular';
+import { WorkoutRequestPayload } from 'src/app/common/workout-request.payload';
 
 @Component({
   selector: 'app-excersize-list',
@@ -14,31 +15,31 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./excersize-list.component.scss'],
 })
 export class ExcersizeListComponent implements OnInit {
-  programRequestPayload: ProgramRequestPayload;
+  workoutRequestPayload: WorkoutRequestPayload;
   constructor(private route:ActivatedRoute,private httpClient: HttpClient,  private toastController: ToastController) {
-    this.programRequestPayload = {
-      programName: '',
+    this.workoutRequestPayload = {
+      workoutName: '',
       ids: []
     };
    }
   products: Excersize[];
-  programCreationForm: FormGroup;
+  workoutCreationForm: FormGroup;
   ids: Array<Number>=[];
  
   ngOnInit() {
     this.route.paramMap.subscribe(() => {
       this.getExcersizes();
     });
-    this.programCreationForm = new FormGroup({
-      programName: new FormControl('', Validators.required)
+    this.workoutCreationForm = new FormGroup({
+      workoutName: new FormControl('', Validators.required)
          });
   }
-  saveProgram(){
-    const progName = this.programCreationForm.get('programName').value;
+  saveWorkout(){
+    const progName = this.workoutCreationForm.get('workoutName').value;
     console.log("Your Entered Program = "+progName+" ids = "+this.ids);
-    this.programRequestPayload.programName= progName;
-    this.programRequestPayload.ids = this.ids;
-    this.save(this.programRequestPayload).subscribe(data=>{
+    this.workoutRequestPayload.workoutName= progName;
+    this.workoutRequestPayload.ids = this.ids;
+    this.save(this.workoutRequestPayload).subscribe(data=>{
       console.log("calling presentSuccessSaveToast with "+data)
       this.presentSuccessSaveToast(data);
     })
@@ -52,10 +53,10 @@ export class ExcersizeListComponent implements OnInit {
     });
     toast.present();
   }
-  save(programRequestPayload: ProgramRequestPayload): Observable<String>{
+  save(workoutRequestPayload: WorkoutRequestPayload): Observable<String>{
     const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
-    return this.httpClient.post<String>(`${this.baseUrl}/saveProgram`,
-    programRequestPayload,{ responseType: 'text' as 'json'  });
+    return this.httpClient.post<String>(`${this.baseUrl}/saveWorkout`,
+    workoutRequestPayload,{ responseType: 'text' as 'json'  });
   }
   private baseUrl = 'http://localhost:8080/api/programs';
   private baseUrl1 = 'http://localhost:8080/api/excersizes';

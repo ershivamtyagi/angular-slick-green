@@ -1,11 +1,11 @@
 <ion-content>
   <ion-list>
-    <form [formGroup]="programCreationForm" (ngSubmit)="saveProgram()">
+    <form [formGroup]="workoutCreationForm" (ngSubmit)="saveWorkout()">
       <ion-item-sliding>
-        <ion-label>Enter Program Name</ion-label>
-        <ion-input class="form-control" [formControlName]="'programName'" name="program-name" required autofocus></ion-input>
-        <span *ngIf="!programCreationForm.get('programName').valid && programCreationForm.get('programName').touched">
-          Please provide a valid program Name
+        <ion-label>Enter Workout Name</ion-label>
+        <ion-input class="form-control" [formControlName]="'workoutName'" name="workout-name" required autofocus></ion-input>
+        <span *ngIf="!workoutCreationForm.get('workoutName').valid && workoutCreationForm.get('workoutName').touched">
+          Please provide a valid Workout Name
       </span>
       </ion-item-sliding>
       <ion-item *ngFor="let e of products">

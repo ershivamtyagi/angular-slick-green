@@ -1,5 +1,7 @@
+import { Workout } from "./workout";
+
 export class Program {
     id: number;
     name: string;
-    excersize:[];
+    workout: Array<Workout>;
 }
