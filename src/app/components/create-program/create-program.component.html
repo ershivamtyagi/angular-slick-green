@@ -1,0 +1,172 @@
+<ion-content>
+  <mat-vertical-stepper [linear]="true" #stepper>
+    <mat-step [stepControl]="programFormGroup">
+      <form [formGroup]="programFormGroup">
+        <ng-template matStepLabel>Enter program info</ng-template>
+        <mat-form-field>
+          <input matInput value="1" placeholder="Program Name" formControlName="programName" required>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Program Range" [value]="1" formControlName="programRange" readonly>
+          <mat-label>Range in Month</mat-label>
+        </mat-form-field>
+        <div>
+          <button mat-icon-button matStepperNext>
+            <mat-icon>arrow_forward</mat-icon>
+          </button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Enter workout info</ng-template>
+        <mat-form-field>
+          <mat-label>Monday</mat-label>
+          <input type="text" placeholder="Monday Workout" formControlName="workoutForMonday" matInput
+            [matAutocomplete]="auto" required>
+          <!-- autocompletes for monday-->
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="getWorkoutName">
+            <!-- <mat-option>New Workout</mat-option> -->
+            <mat-option *ngFor="let workout of workouts" [value]="workout" matTooltip="{{workout.name}}">
+              {{workout.name}}
+              <!-- for object fix to not show obj-->
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        <mat-form-field>
+          <input type="text" formControlName="workoutForTuesday" placeholder="Tuesday Workout" matInput
+            [matAutocomplete]="auto1" required>
+
+          <!-- autocompletes for tuesday-->
+          <mat-autocomplete autoActiveFirstOption #auto1="matAutocomplete" [displayWith]="getWorkoutName">
+            <!-- <mat-option>New Workout</mat-option> -->
+            <mat-option *ngFor="let workout of workouts" [value]="workout" matTooltip="{{workout.name}}">
+              {{workout.name}}
+              <!-- for object fix to not show obj-->
+            </mat-option>
+          </mat-autocomplete>
+
+        </mat-form-field>
+        <!--Wed-->
+        <mat-form-field>
+          <mat-label>Wednesday</mat-label>
+          <input type="text" formControlName="workoutForWed" placeholder="Wednesday Workout" matInput
+          [matAutocomplete]="autoWed" required>
+        <!-- autocompletes for wed-->
+        <mat-autocomplete autoActiveFirstOption #autoWed="matAutocomplete" [displayWith]="getWorkoutName">
+          <!-- <mat-option>New Workout</mat-option> -->
+          <mat-option *ngFor="let workout of workouts" [value]="workout" matTooltip="{{workout.name}}">
+            {{workout.name}}
+            <!-- for object fix to not show obj-->
+          </mat-option>
+        </mat-autocomplete>
+        </mat-form-field>
+        <!--Thrusday-->
+        <mat-form-field>
+          <mat-label>Thrusday</mat-label>
+          <input type="text" formControlName="workoutForThr" placeholder="Thrusday Workout" matInput
+          [matAutocomplete]="autoThr" required>
+        <!-- autocompletes for Thr-->
+        <mat-autocomplete autoActiveFirstOption #autoThr="matAutocomplete" [displayWith]="getWorkoutName">
+          <!-- <mat-option>New Workout</mat-option> -->
+          <mat-option *ngFor="let workout of workouts" [value]="workout" matTooltip="{{workout.name}}">
+            {{workout.name}}
+            <!-- for object fix to not show obj-->
+          </mat-option>
+        </mat-autocomplete>
+        </mat-form-field>
+        <!--Friday -->
+        <mat-form-field>
+          <mat-label>Friday</mat-label>
+          <input type="text" formControlName="workoutForFri" placeholder="Friday Workout" matInput
+          [matAutocomplete]="autoFri" required>
+               <!-- autocompletes for Fri-->
+               <mat-autocomplete autoActiveFirstOption #autoFri="matAutocomplete" [displayWith]="getWorkoutName">
+                <!-- <mat-option>New Workout</mat-option> -->
+                <mat-option *ngFor="let workout of workouts" [value]="workout" matTooltip="{{workout.name}}">
+                  {{workout.name}}
+                  <!-- for object fix to not show obj-->
+                </mat-option>
+              </mat-autocomplete>
+        </mat-form-field>
+        <!--Sat-->
+        <mat-form-field>
+          <mat-label>Saturday</mat-label>
+          <input type="text" formControlName="workoutForSat" placeholder="Saturday Workout" matInput
+          [matAutocomplete]="autoSat" required>
+               <!-- autocompletes for Fri-->
+               <mat-autocomplete autoActiveFirstOption #autoSat="matAutocomplete" [displayWith]="getWorkoutName">
+                <!-- <mat-option>New Workout</mat-option> -->
+                <mat-option *ngFor="let workout of workouts" [value]="workout" matTooltip="{{workout.name}}">
+                  {{workout.name}}
+                  <!-- for object fix to not show obj-->
+                </mat-option>
+              </mat-autocomplete>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Sunday</mat-label>
+          <input type="text" formControlName="workoutForSun" placeholder="Sunday Workout" matInput
+          [matAutocomplete]="autoSun" required>
+               <!-- autocompletes for Fri-->
+               <mat-autocomplete autoActiveFirstOption #autoSun="matAutocomplete" [displayWith]="getWorkoutName">
+                <!-- <mat-option>New Workout</mat-option> -->
+                <mat-option *ngFor="let workout of workouts" [value]="workout" matTooltip="{{workout.name}}">
+                  {{workout.name}}
+                  <!-- for object fix to not show obj-->
+                </mat-option>
+              </mat-autocomplete>
+        </mat-form-field>
+        <div>
+          <button mat-icon-button matStepperPrevious>
+            <mat-icon>arrow_back</mat-icon>
+          </button>
+          <button mat-icon-button matStepperNext matTooltip="Forward">
+            <mat-icon>arrow_forward</mat-icon>
+          </button>
+        </div>
+      </form>
+    </mat-step>
+    <!--Diet Step-->
+    <mat-step [stepControl]="dietFormGroup">
+      <form [formGroup]="dietFormGroup">
+        <ng-template matStepLabel>Enter Diet info</ng-template>
+        <mat-form-field>
+          <mat-label>Monday</mat-label>
+          <input type="text" placeholder="Monday Diet" formControlName="dietForMon" matInput
+            [matAutocomplete]="autoD" required>
+          <!-- autocompletes for monday-->
+          <mat-autocomplete autoActiveFirstOption #autoD="matAutocomplete" [displayWith]="getWorkoutName">
+            <!-- <mat-option>New Workout</mat-option> -->
+            <mat-option *ngFor="let workout of workouts" [value]="workout" matTooltip="{{workout.name}}">
+              {{workout.name}}
+              <!-- for object fix to not show obj-->
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        
+        <div>
+          <button mat-icon-button matStepperPrevious>
+            <mat-icon>arrow_back</mat-icon>
+          </button>
+          <button mat-icon-button matStepperNext matTooltip="Forward">
+            <mat-icon>arrow_forward</mat-icon>
+          </button>
+        </div>
+      </form>
+    </mat-step>
+    <!--Preview Step-->
+    <mat-step [optional]="false">
+      <ng-template matStepLabel>Preview</ng-template>
+      <p>Program Saved!</p>
+      <div>
+        <ion-button type="submit" (click)="save()">Submit</ion-button>
+        <button mat-icon-button matStepperPrevious>
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        <!-- <button mat-icon-button (click)="stepper.reset()">
+          <mat-icon>refresh</mat-icon>
+        </button> -->
+      </div>
+    </mat-step>
+  </mat-vertical-stepper>
+</ion-content>
