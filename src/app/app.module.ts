@@ -28,14 +28,47 @@ import { WebIntent } from '@ionic-native/web-intent/ngx';
 import { UserSettingComponent } from './components/user-setting/user-setting.component';
 import { ShowWorkoutComponent } from './components/show-workout/show-workout.component';
 import { ShowWorkoutDetailsComponent } from './components/show-workout-details/show-workout-details.component';
+import { CreateProgramComponent } from './components/create-program/create-program.component';
+//Material Design
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// Material
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatTooltipModule} from '@angular/material/tooltip'; 
+// For Table
+import {MatTableModule} from '@angular/material/table';
+import {MatSortModule} from '@angular/material/sort';
+
 @NgModule({
   declarations: [AppComponent, ProductCategoryMenuComponent, UserProfileComponent, LoginComponent, SignupComponent,ProductListComponent,
   ProductDetailsComponent, CartStatusComponent,SearchComponent , ExcersizeHistoryComponent, ExcersizeListComponent, UserProgramsComponent,
-  UserProgramDetailComponent,AssignProgramToUserComponent,UserSettingComponent,ShowWorkoutComponent,ShowWorkoutDetailsComponent],
+  UserProgramDetailComponent,AssignProgramToUserComponent,UserSettingComponent,ShowWorkoutComponent,ShowWorkoutDetailsComponent,CreateProgramComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, NgxWebstorageModule.forRoot(), ReactiveFormsModule,
-    ],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, NgxWebstorageModule.forRoot(), ReactiveFormsModule, BrowserAnimationsModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatStepperModule,
+    MatAutocompleteModule,
+    MatSnackBarModule,
+    MatTooltipModule,
+    MatTableModule,
+    MatSortModule
+  ],
   providers: [
+    // Material
+    // MatButtonModule,
+    // MatFormFieldModule,
+    // MatIconModule,
+    // MatInputModule,
+    // MatStepperModule,
+  
     StatusBar,
     SplashScreen,
     WebIntent,
@@ -45,6 +78,7 @@ import { ShowWorkoutDetailsComponent } from './components/show-workout-details/s
       useClass: TokenInterceptor,
       multi: true
     }
+    
   ],
   bootstrap: [AppComponent]
 })

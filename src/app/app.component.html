@@ -2,40 +2,40 @@
   <ion-split-pane when="sm" contentId="main-content">
     <ion-menu contentId="main-content" type="overlay" swipeGesture="true">
       <ion-header>
-        <ion-toolbar color="primary"  class="user-profile">
+        <ion-toolbar color="primary" class="user-profile">
           <!-- <ion-title>Menu</ion-title> -->
           <ion-grid>
             <ion-row>
               <ion-col size="4">
-                  <div class="user-avatar">
-                    <img src="../assets/images/logo2.png">
-                  </div>
+                <div class="user-avatar">
+                  <img src="../assets/images/logo2.png">
+                </div>
               </ion-col>
               <ion-col class="ion-padding" size="8">
                 <h2 ion-text class="no-margin bold text-white">
-                 Shivam Tyagi
+                  Shivam Tyagi
                 </h2>
                 <span ion-text color="light">Subscriber (2.0)</span>
               </ion-col>
             </ion-row>
             <div *ngIf="isLoggedIn">
-            <ion-row  class="other-data ion-no-padding">
-              <ion-col class="column  ion-no-padding">
-                <ion-button size="small" 
-                expand="full" class="ion-no-padding" color="light" (click)="goToUserProfile()" menuClose>
-                  <ion-icon slot="start" name="settings-outline"></ion-icon>
-                  View Profile
-                </ion-button>
-              </ion-col>
-              <ion-col  class="column ion-no-padding">
-                <ion-button size="small" class="ion-no-padding"
-                expand="full"  color="light" menuClose (click)="logout()">
-                  <ion-icon slot="start" name="log-out"></ion-icon>
-                  Log Out
-                </ion-button>
-              </ion-col>
-            </ion-row>
-    </div>
+              <ion-row class="other-data ion-no-padding">
+                <ion-col class="column  ion-no-padding">
+                  <ion-button size="small" expand="full" class="ion-no-padding" color="light"
+                    (click)="goToUserProfile()" menuClose>
+                    <ion-icon slot="start" name="settings-outline"></ion-icon>
+                    View Profile
+                  </ion-button>
+                </ion-col>
+                <ion-col class="column ion-no-padding">
+                  <ion-button size="small" class="ion-no-padding" expand="full" color="light" menuClose
+                    (click)="logout()">
+                    <ion-icon slot="start" name="log-out"></ion-icon>
+                    Log Out
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+            </div>
           </ion-grid>
         </ion-toolbar>
       </ion-header>
@@ -45,8 +45,8 @@
           <ion-list-header>
             Navigate
           </ion-list-header>
-            <app-product-category-menu></app-product-category-menu>
-          
+          <app-product-category-menu></app-product-category-menu>
+
 
         </ion-list>
       </ion-content>
@@ -54,8 +54,8 @@
 
     <div class="ion-page" id="main-content">
       <ion-header>
-        
-    
+
+
         <ion-toolbar>
           <ion-buttons slot="start">
             <ion-menu-toggle>
@@ -65,26 +65,27 @@
             </ion-menu-toggle>
           </ion-buttons>
           <ion-title>Header</ion-title>
-        
-              
-              
-              
-              <!-- <ion-button (click)="enableDark()" shape="round" fill="solid" slot="end">
+
+
+
+
+          <!-- <ion-button (click)="enableDark()" shape="round" fill="solid" slot="end">
                 Click ME
               </ion-button>
               <ion-button (click)="enableLight()" shape="round" fill="solid" slot="end">
                 Click ME
               </ion-button> -->
-              
-              <ion-item slot="end"> <!--<app-cart-status></app-cart-status>kfk -->
-                <!-- <ion-label>Change Theme</ion-label> -->
-                <app-cart-status></app-cart-status>
-                <app-user-profile></app-user-profile>
-                <ion-toggle (ionChange)="changeTheme($event)" color="light"></ion-toggle>
-                
-              </ion-item>
-        
-              <!-- <ion-buttons slot="end">
+
+          <ion-item slot="end">
+            <!--<app-cart-status></app-cart-status>kfk -->
+            <!-- <ion-label>Change Theme</ion-label> -->
+            <app-cart-status></app-cart-status>
+            <app-user-profile></app-user-profile>
+            <ion-toggle (ionChange)="changeTheme($event)" color="light"></ion-toggle>
+
+          </ion-item>
+
+          <!-- <ion-buttons slot="end">
                 <ion-button id="cart-btn">
                   <ion-icon name="cart-outline"></ion-icon>
                   <ion-badge id="cart-badge">260k</ion-badge>
@@ -92,11 +93,11 @@
               
                  
                 </ion-buttons> -->
-                <!-- <button id="cart-btn" ion-button icon-only (click)="cart()">
+          <!-- <button id="cart-btn" ion-button icon-only (click)="cart()">
                   <ion-icon name="cart"></ion-icon>
                   <ion-badge id="cart-badge">260k</ion-badge>
             </button>-->
-            <!-- <ion-buttons slot="end">
+          <!-- <ion-buttons slot="end">
               <button id="notification-button" slot="end" ion-button>
                   <ion-icon name="cart-outline">
                    </ion-icon>   <ion-badge id="notifications-badge" color="info"><app-cart-status></app-cart-status></ion-badge>
@@ -104,7 +105,7 @@
               </button>
          </ion-buttons> -->
         </ion-toolbar>
-        <app-search></app-search>  
+        <app-search></app-search>
       </ion-header>
       <ion-content class="ion-padding">
         <ion-router-outlet></ion-router-outlet>

@@ -30,6 +30,8 @@ import { AuthGuard } from './components/auth/auth.guard';
 import { UserSettingComponent } from './components/user-setting/user-setting.component';
 import { ShowWorkoutComponent } from './components/show-workout/show-workout.component';
 import { ShowWorkoutDetailsComponent } from './components/show-workout-details/show-workout-details.component';
+import { CreateProgramComponent } from './components/create-program/create-program.component';
+import { CreateWorkoutComponent } from './components/create-workout/create-workout.component';
 
 const routes: Routes = [
   // { path: '', component: HomeComponent },
@@ -53,6 +55,8 @@ const routes: Routes = [
   {path: 'products', component: ProductListComponent},
   {path: 'excersizes', component: ExcersizeListComponent},
   {path: 'assignProgramToUser', component: AssignProgramToUserComponent},
+  {path: 'createProgram', component: CreateProgramComponent},
+  {path: 'createWorkout', component: CreateWorkoutComponent},
   {path: '', redirectTo: '/products', pathMatch: 'full'},
   {path: '**', redirectTo: '/products', pathMatch: 'full'}
 
