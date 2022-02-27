@@ -1,7 +1,7 @@
 <ion-content>
   <ion-card *ngFor="let e of products">
     <div *ngIf="category=='D'">
-      <ion-item [routerLink]="['/showWorkoutDetail',e.id]">
+      <ion-item>
         <ion-col>{{e.name}}</ion-col>
       </ion-item>
         <ion-item>

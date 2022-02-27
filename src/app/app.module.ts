@@ -27,7 +27,6 @@ import { AssignProgramToUserComponent } from './components/assign-program-to-use
 import { WebIntent } from '@ionic-native/web-intent/ngx';
 import { UserSettingComponent } from './components/user-setting/user-setting.component';
 import { ShowWorkoutComponent } from './components/show-workout/show-workout.component';
-import { ShowWorkoutDetailsComponent } from './components/show-workout-details/show-workout-details.component';
 import { CreateProgramComponent } from './components/create-program/create-program.component';
 //Material Design
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -43,11 +42,15 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 // For Table
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
+import { DemoComponent } from './components/demo/demo.component';
+import { SaveWorkoutComponent } from './components/save-workout/save-workout.component';
+import { IonSelectSearchLibModule } from 'ionic-select-search';
 
 @NgModule({
   declarations: [AppComponent, ProductCategoryMenuComponent, UserProfileComponent, LoginComponent, SignupComponent,ProductListComponent,
   ProductDetailsComponent, CartStatusComponent,SearchComponent , ExcersizeHistoryComponent, ExcersizeListComponent, UserProgramsComponent,
-  UserProgramDetailComponent,AssignProgramToUserComponent,UserSettingComponent,ShowWorkoutComponent,ShowWorkoutDetailsComponent,CreateProgramComponent],
+  UserProgramDetailComponent,AssignProgramToUserComponent,UserSettingComponent,ShowWorkoutComponent,CreateProgramComponent,DemoComponent,
+  SaveWorkoutComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, NgxWebstorageModule.forRoot(), ReactiveFormsModule, BrowserAnimationsModule,
     MatButtonModule,
@@ -59,7 +62,8 @@ import {MatSortModule} from '@angular/material/sort';
     MatSnackBarModule,
     MatTooltipModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    IonSelectSearchLibModule
   ],
   providers: [
     // Material

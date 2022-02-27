@@ -1,0 +1,95 @@
+<ion-content>
+  <ion-grid>
+    <form [formGroup]="workout" (ngSubmit)="onSubmit(workout)">
+      <ion-item-sliding>
+        <ion-label>Enter Workout Name</ion-label>
+        <ion-input class="form-control" type="text" placeholder="Workout Name" formControlName="name" required>
+        </ion-input>
+        <span color="danger"
+          *ngIf="!workout.get('name').valid && (workout.get('name').touched || workout.get('name').dirty)">
+          Please provide a valid Workout Name
+          <!-- {{workout.get('name').errors | json}} -->
+          <div *ngIf="workout.get('name')?.errors?.required">
+            Name is required.
+          </div>
+        </span>
+      </ion-item-sliding>
+      <ion-row>
+        <ion-button (click)="addExcersize()" class="point">
+          <ion-icon slot="end" name="add-circle-outline" size="small"></ion-icon>Excersize
+        </ion-button>
+        <ion-button color="danger" (click)="removeExcersize(val-1)" class="point">
+          <ion-icon slot="end" name="remove-circle-outline" size="small"></ion-icon>Excersize
+        </ion-button>
+
+      </ion-row>
+      <!---Excersize Section -->
+      <div formArrayName="excersizes">
+        <div class="section-container" *ngFor="let excersize of getExcersizes(workout); let i = index">
+          <div [formGroupName]="i">
+            <ion-row>
+
+              <ion-col>
+                <ion-input type="text" formControlName="sno" readonly></ion-input>
+
+              </ion-col>
+              <ion-col>
+                <!-- <ion-input class="form-control" type="text" placeholder="Excersize Name"
+                  formControlName="excersizeName">
+
+                  
+                </ion-input> -->
+                <ion-select  interface="action-sheet" class="custom-options" value="1" placeholder="Select One" formControlName="excersizeName" >
+
+                  <ion-select-option *ngFor="let val of products" value="{{val.name}}">{{val.name}}</ion-select-option>
+                  </ion-select>
+              </ion-col>
+              <ion-col>
+                <ion-input class="form-control" type="text" placeholder="Excersize Description"
+                  formControlName="excersizeDescription"></ion-input>
+              </ion-col>
+              <ion-col>
+                <ion-button shape="round" fill="outline" color="success" size="small" (click)="addSet(i)">
+                  <ion-icon slot="end" name="add-circle-outline" size="small"></ion-icon>Set
+                </ion-button>
+                <ion-button shape="round" fill="outline" color="warning" size="small" (click)="move(-1, i)">
+                  <ion-icon slot="end" name="arrow-up-outline" size="small"></ion-icon>
+                </ion-button>
+                <ion-button shape="round" fill="outline" color="danger" size="small" (click)="move(i, 1)">
+                  <ion-icon slot="end" name="arrow-down-outline" size="small"></ion-icon>
+                </ion-button>
+
+              </ion-col>
+            </ion-row>
+            <!-- Set Section -->
+            <div class="question-container" formArrayName="sets">
+              <div [formGroupName]="j" *ngFor="let question of getSets(excersize); let j = index">
+                <ion-row>
+                  <ion-col>
+                    <ion-input type="text" placeholder="Reps" formControlName="reps"></ion-input>
+                  </ion-col>
+                  <ion-col>
+                    <ion-input type="text" placeholder="Rest" formControlName="rest"></ion-input>
+                  </ion-col>
+                  <ion-col>
+                    <ion-input type="text" placeholder="Weight" formControlName="weight"></ion-input>
+                  </ion-col>
+                  <ion-button size="small" shape="round" fill="outline" color="danger" (click)="removeSet(i,j)">
+                    <ion-icon slot="end" name="remove-circle-outline" size="small"></ion-icon>
+                  </ion-button>
+                  <ion-button size="small" shape="round" fill="outline" color="warning" (click)="copySet(i,j)">
+                    <ion-icon slot="end" name="copy-outline" size="small"></ion-icon>
+                  </ion-button>
+                </ion-row>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <ion-button color="success" type="submit" class="point">Submit </ion-button>
+
+      </div>
+    </form>
+  </ion-grid>
+  <!-- <pre> {{workout.value | json}} </pre> -->
+</ion-content>

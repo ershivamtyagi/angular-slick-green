@@ -29,9 +29,9 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { AuthGuard } from './components/auth/auth.guard';
 import { UserSettingComponent } from './components/user-setting/user-setting.component';
 import { ShowWorkoutComponent } from './components/show-workout/show-workout.component';
-import { ShowWorkoutDetailsComponent } from './components/show-workout-details/show-workout-details.component';
 import { CreateProgramComponent } from './components/create-program/create-program.component';
-import { CreateWorkoutComponent } from './components/create-workout/create-workout.component';
+import { DemoComponent } from './components/demo/demo.component';
+import { SaveWorkoutComponent } from './components/save-workout/save-workout.component';
 
 const routes: Routes = [
   // { path: '', component: HomeComponent },
@@ -48,7 +48,6 @@ const routes: Routes = [
   {path: 'search/:keyword', component: ProductListComponent},
   {path: 'category/:id', component: ProductListComponent},
   {path: 'showWorkout/:categoryId', component: ShowWorkoutComponent},
-  {path: 'showWorkoutDetail/:id', component: ShowWorkoutDetailsComponent},
   {path: 'userPrograms', component: UserProgramsComponent},
   {path: 'userPrograms/:id', component: UserProgramDetailComponent},
   {path: 'category', component: ProductListComponent},
@@ -56,7 +55,8 @@ const routes: Routes = [
   {path: 'excersizes', component: ExcersizeListComponent},
   {path: 'assignProgramToUser', component: AssignProgramToUserComponent},
   {path: 'createProgram', component: CreateProgramComponent},
-  {path: 'createWorkout', component: CreateWorkoutComponent},
+  // {path: 'createWorkout', component: CreateWorkoutComponent},
+  {path: 'createWorkout', component: SaveWorkoutComponent},
   {path: '', redirectTo: '/products', pathMatch: 'full'},
   {path: '**', redirectTo: '/products', pathMatch: 'full'}
 
