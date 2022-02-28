@@ -34,15 +34,9 @@
 
               </ion-col>
               <ion-col>
-                <!-- <ion-input class="form-control" type="text" placeholder="Excersize Name"
+                <ion-input class="form-control" type="text" placeholder="Excersize Name"
                   formControlName="excersizeName">
-
-                  
-                </ion-input> -->
-                <ion-select  interface="action-sheet" class="custom-options" value="1" placeholder="Select One" formControlName="excersizeName" >
-
-                  <ion-select-option *ngFor="let val of products" value="{{val.name}}">{{val.name}}</ion-select-option>
-                  </ion-select>
+                </ion-input>
               </ion-col>
               <ion-col>
                 <ion-input class="form-control" type="text" placeholder="Excersize Description"

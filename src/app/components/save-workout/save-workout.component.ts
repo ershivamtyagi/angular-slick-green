@@ -7,7 +7,6 @@ import { Excersize } from 'src/app/common/excersize';
 import { ExcersizeListResponse } from 'src/app/common/excersize-list-response';
 import { ExcersizeService } from 'src/app/services/excersize.service';
 import { BASE_URL } from 'src/environments/environment';
-import { IonicSelectableComponent } from 'ionic-selectable';
 
 
 @Component({
