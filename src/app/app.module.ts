@@ -44,13 +44,14 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import { DemoComponent } from './components/demo/demo.component';
 import { SaveWorkoutComponent } from './components/save-workout/save-workout.component';
-import { IonSelectSearchLibModule } from 'ionic-select-search';
+import { ExersizePopoverComponent } from './components/exersize-popover/exersize-popover.component';
+import { CreateExcersizeComponent } from './components/create-excersize/create-excersize.component';
 
 @NgModule({
   declarations: [AppComponent, ProductCategoryMenuComponent, UserProfileComponent, LoginComponent, SignupComponent,ProductListComponent,
   ProductDetailsComponent, CartStatusComponent,SearchComponent , ExcersizeHistoryComponent, ExcersizeListComponent, UserProgramsComponent,
   UserProgramDetailComponent,AssignProgramToUserComponent,UserSettingComponent,ShowWorkoutComponent,CreateProgramComponent,DemoComponent,
-  SaveWorkoutComponent],
+  SaveWorkoutComponent,ExersizePopoverComponent,CreateExcersizeComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, NgxWebstorageModule.forRoot(), ReactiveFormsModule, BrowserAnimationsModule,
     MatButtonModule,
@@ -62,17 +63,9 @@ import { IonSelectSearchLibModule } from 'ionic-select-search';
     MatSnackBarModule,
     MatTooltipModule,
     MatTableModule,
-    MatSortModule,
-    IonSelectSearchLibModule
+    MatSortModule
   ],
   providers: [
-    // Material
-    // MatButtonModule,
-    // MatFormFieldModule,
-    // MatIconModule,
-    // MatInputModule,
-    // MatStepperModule,
-  
     StatusBar,
     SplashScreen,
     WebIntent,

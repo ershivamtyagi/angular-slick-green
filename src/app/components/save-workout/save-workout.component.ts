@@ -2,11 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, RequiredValidator, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
+import { PopoverController, ToastController } from '@ionic/angular';
 import { Excersize } from 'src/app/common/excersize';
 import { ExcersizeListResponse } from 'src/app/common/excersize-list-response';
 import { ExcersizeService } from 'src/app/services/excersize.service';
 import { BASE_URL } from 'src/environments/environment';
+import { LoginComponent } from '../auth/login/login.component';
+import { ExersizePopoverComponent } from '../exersize-popover/exersize-popover.component';
 
 
 @Component({
@@ -19,10 +21,11 @@ export class SaveWorkoutComponent implements OnInit {
   workout: FormGroup;
   baseUrl3 = 'http://localhost:8080/api/workouts';
   products: ExcersizeListResponse[];
-
+  items: string[];
   constructor(private httpClient: HttpClient,
     private toastController: ToastController,
-    private route: Router,private excersizeService:ExcersizeService) { }
+    private route: Router, private excersizeService: ExcersizeService,
+    private popoverController: PopoverController) { }
 
   ngOnInit() {
     const newLocal_1 = this.initExcersizes();
@@ -39,10 +42,22 @@ export class SaveWorkoutComponent implements OnInit {
       //selling_points: this.fb.array([this.fb.group({point:''})])
       sno: new FormControl(''),
       excersizeName: new FormControl(''),
-      excersizeDescription: new FormControl(''),
+       //excersizeDescription: new FormControl(''),
       sets: new FormArray([
         // this.initSet()
       ])
+    });
+  }
+  initNewExcersize(){
+    return new FormGroup({
+       excersizeDescription: new FormControl(''),
+       type: new FormControl(''),
+       equipement: new FormControl(''),
+       mechanicsType: new FormControl(''),
+       level:new FormControl(''),
+       force: new FormControl(''),
+       variation: new FormControl(''),
+       otherMucles: new FormControl('')
     });
   }
   val: number = 1;
@@ -149,11 +164,11 @@ export class SaveWorkoutComponent implements OnInit {
       .post<String>(`${this.baseUrl3}`, form.value, { responseType: 'text' as 'json' })
       .subscribe(this.processResult2());
   }
-   baseUrl1:string =BASE_URL+'/excersizes';
-   baseUrl2= 'http://localhost:8080/api/excersizes';
+  baseUrl1: string = BASE_URL + '/excersizes';
+  baseUrl2 = 'http://localhost:8080/api/excersizes';
 
   private baseUrl11 = 'http://localhost:8080/api/excersizes';
-  getExcersizess(){
+  getExcersizess() {
     console.log("data");
     this.httpClient.get<ExcersizeListResponse[]>(`${this.baseUrl11}`).subscribe(this.processResult());
   }
@@ -164,13 +179,21 @@ export class SaveWorkoutComponent implements OnInit {
       console.log(JSON.stringify(this.products));
     };
   }
-  excersizeResponseList:ExcersizeListResponse[];
+  excersizeResponseList: ExcersizeListResponse[];
   processData() {
     console.log("called")
     return (data) => {
-      console.log(data);
-      this.excersizeResponseList=data.excersizes;
+
+      this.excersizeResponseList = data._embedded.excersizes;
+
     };
+  }
+
+  clickButton(name, i) {
+    console.log(name);
+    const control = <FormArray>this.workout.get('excersizes')['controls'][i].get('excersizeName');
+    control.patchValue(name);
+
   }
   processResult2() {
     return (data) => {
@@ -188,15 +211,41 @@ export class SaveWorkoutComponent implements OnInit {
     });
     toast.present();
   }
-}
-interface GetResponseExcersizes{
-  _embedded: {
-    excersizes: ExcersizeListResponse[];
-  },
-  page: {
-    size: number,
-    totalElements: number,
-    totalPages: number,
-    number: number
+  // search 
+  triggerSearch() {
+
+  }
+  async yourSearchFunction(ev: any, i) {
+    if(!this.flag)
+        this.openExcersizeListPopover(ev, i);
+    this.flag=false;
+
+  }
+  private async openExcersizeListPopover(ev: any, i) {
+    const popover = await this.popoverController.create({
+      component: ExersizePopoverComponent,
+      componentProps: {
+        exList: this.excersizeResponseList,
+        name: ev.target.value
+      },
+      event: ev
+
+      
+    });
+    const currentPopover = popover;
+
+    popover.present();
+    currentPopover.onDidDismiss().then((result) => {
+      const control = <FormArray>this.workout.get('excersizes')['controls'][i];
+      if(result.data=='new'){
+         // openCreateSetPopover();
+      }
+      control.get('excersizeName').patchValue(result.data);
+      this.flag=true;
+    });
+  }
+  flag:boolean=false;
+  openCreateSetPopover() {
+
   }
 }

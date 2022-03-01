@@ -28,20 +28,27 @@
         <div class="section-container" *ngFor="let excersize of getExcersizes(workout); let i = index">
           <div [formGroupName]="i">
             <ion-row>
-
+              <!-- <ion-col>
+                <ion-searchbar showCancelButton searchIcon="search" type="text" debounce="500" animated
+                  cancel-button-icon (ionCancel)="hideSearch()" (ionChange)="yourSearchFunction($event)"
+                
+                   placeholder="Search Some Values" formControlName="excersizeName">
+                </ion-searchbar>
+                
+              </ion-col> -->
               <ion-col>
                 <ion-input type="text" formControlName="sno" readonly></ion-input>
 
               </ion-col>
-              <ion-col>
-                <ion-input class="form-control" type="text" placeholder="Excersize Name"
+               <ion-col>
+                <ion-input debounce="1500" (ionChange)="yourSearchFunction($event,i)"  class="form-control" type="text" placeholder="Excersize Name"
                   formControlName="excersizeName">
                 </ion-input>
-              </ion-col>
-              <ion-col>
+              </ion-col> 
+              <!-- <ion-col>
                 <ion-input class="form-control" type="text" placeholder="Excersize Description"
                   formControlName="excersizeDescription"></ion-input>
-              </ion-col>
+              </ion-col> -->
               <ion-col>
                 <ion-button shape="round" fill="outline" color="success" size="small" (click)="addSet(i)">
                   <ion-icon slot="end" name="add-circle-outline" size="small"></ion-icon>Set
