@@ -46,12 +46,13 @@ import { DemoComponent } from './components/demo/demo.component';
 import { SaveWorkoutComponent } from './components/save-workout/save-workout.component';
 import { ExersizePopoverComponent } from './components/exersize-popover/exersize-popover.component';
 import { CreateExcersizeComponent } from './components/create-excersize/create-excersize.component';
+import { SaveDietComponent } from './components/save-diet/save-diet.component';
 
 @NgModule({
   declarations: [AppComponent, ProductCategoryMenuComponent, UserProfileComponent, LoginComponent, SignupComponent,ProductListComponent,
   ProductDetailsComponent, CartStatusComponent,SearchComponent , ExcersizeHistoryComponent, ExcersizeListComponent, UserProgramsComponent,
   UserProgramDetailComponent,AssignProgramToUserComponent,UserSettingComponent,ShowWorkoutComponent,CreateProgramComponent,DemoComponent,
-  SaveWorkoutComponent,ExersizePopoverComponent,CreateExcersizeComponent],
+  SaveWorkoutComponent,ExersizePopoverComponent,CreateExcersizeComponent,SaveDietComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, NgxWebstorageModule.forRoot(), ReactiveFormsModule, BrowserAnimationsModule,
     MatButtonModule,

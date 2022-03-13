@@ -32,6 +32,7 @@ import { ShowWorkoutComponent } from './components/show-workout/show-workout.com
 import { CreateProgramComponent } from './components/create-program/create-program.component';
 import { DemoComponent } from './components/demo/demo.component';
 import { SaveWorkoutComponent } from './components/save-workout/save-workout.component';
+import { SaveDietComponent } from './components/save-diet/save-diet.component';
 
 const routes: Routes = [
   // { path: '', component: HomeComponent },
@@ -55,7 +56,7 @@ const routes: Routes = [
   {path: 'excersizes', component: ExcersizeListComponent},
   {path: 'assignProgramToUser', component: AssignProgramToUserComponent},
   {path: 'createProgram', component: CreateProgramComponent},
-  // {path: 'createWorkout', component: CreateWorkoutComponent},
+   {path: 'createDiet', component: SaveDietComponent},
   {path: 'createWorkout', component: SaveWorkoutComponent},
   {path: '', redirectTo: '/products', pathMatch: 'full'},
   {path: '**', redirectTo: '/products', pathMatch: 'full'}
