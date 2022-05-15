@@ -1,87 +1,158 @@
-<ion-content>
+<ion-header #header>
+
+  <ion-toolbar #toolbar color='secondry'>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/recipes"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Add Diet</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" scrollEvents="true"  [appHideHeader]="header">
+  <!-- <ion-content [fullscreen]="true" scrollEvents="true"  [appHideHeader]="toolbar"> -->
+
+
   <ion-grid>
     <form [formGroup]="diet" (ngSubmit)="onSubmit(diet)">
-      <ion-item-sliding>
-        <ion-label>Enter diet Name</ion-label>
-        <ion-input class="form-control" type="text" placeholder="diet Name" formControlName="name" required>
+
+
+      <ion-item>
+        <ion-label position="floating">Enter diet Name</ion-label>
+        <ion-input type="text" [formControlName]="'name'" required>
         </ion-input>
-        <span color="danger"
-          *ngIf="!diet.get('name').valid && (diet.get('name').touched || diet.get('name').dirty)">
+
+      </ion-item>
+
+      <!-- <span color="danger" *ngIf="!diet.get('name').valid && (diet.get('name').touched || diet.get('name').dirty)">
           Please provide a valid diet Name
-          <!-- {{diet.get('name').errors | json}} -->
+         
           <div *ngIf="diet.get('name')?.errors?.required">
             Name is required.
           </div>
-        </span>
-      </ion-item-sliding>
-      <ion-row>
-        <ion-button (click)="addMeal()" class="point">
-          <ion-icon slot="end" name="add-circle-outline" size="small"></ion-icon>Meal
-        </ion-button>
-        <ion-button color="danger" (click)="removeMeal(val-1)" class="point">
-          <ion-icon slot="end" name="remove-circle-outline" size="small"></ion-icon>Meal
-        </ion-button>
+        </span> -->
 
-      </ion-row>
+<!-- 
+        <ion-toolbar>
+          <ion-title>  <ion-icon slot="end" name="cafe" size="small"></ion-icon>Add Meals</ion-title>
+        </ion-toolbar> -->
+
       <!---Excersize Section -->
-      <div formArrayName="meals">
-        <div class="section-container" *ngFor="let meal of getMeals(diet); let i = index">
-          <div [formGroupName]="i">
-            <ion-row>
-              <ion-col>
-                <ion-input type="text" formControlName="sno" readonly></ion-input>
+      <ion-card-header>
+        <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle> -->
+        <ion-card-title>
+          <ion-label color="tertiary">
+            <ion-icon slot="end" name="cafe" size="small"></ion-icon> Meals
+          </ion-label>
+        </ion-card-title>
 
+      </ion-card-header>
+      <div class="section-container" *ngFor="let meal of getMeals(diet); let i = index">
+        <div formArrayName="meals">
+          <div [formGroupName]="i" class="meals">
+            <ion-row class="header">
+              <ion-col>
+                <ion-item>
+                  <ion-input type="text" formControlName="sno" readonly required></ion-input>
+                </ion-item>
               </ion-col>
-               <ion-col>
+              <ion-col sizeLg sizeMd sizeSm="10">
                 <!-- <ion-input debounce="1500" (ionChange)="yourSearchFunction($event,i)"  class="form-control" type="text" placeholder="Excersize Name" -->
-                  <ion-input class="form-control" type="text" placeholder=" Name" formControlName="name">
-                </ion-input>
-              </ion-col> 
+                <ion-item>
+                  <ion-input class="form-control" type="text" placeholder="Meal Name" formControlName="name" required>
+                  </ion-input>
+                </ion-item>
+                <!-- <span class="error"
+                  *ngIf="!meal.get('name').valid && (meal.get('name').touched || meal.get('name').dirty)">
+                  <span *ngIf="meal.get('name')?.errors?.required">
+                    Name is required.
+                  </span> 
+                </span>-->
+              </ion-col>
+              <ion-col>
+                <ion-buttons>
+                  <ion-button shape="round" fill="outline" color="warning" size="small" (click)="move(-1, i)">
+                    <ion-icon slot="end" name="arrow-up-outline" size="small"></ion-icon>
+                  </ion-button>
+
+                  <ion-button shape="round" fill="outline" color="danger" size="small" (click)="move(i, 1)">
+                    <ion-icon slot="end" name="arrow-down-outline" size="small"></ion-icon>
+                  </ion-button>
+                </ion-buttons>
+              </ion-col>
               <!-- <ion-col>
                 <ion-input class="form-control" type="text" placeholder="Excersize Description"
                   formControlName="excersizeDescription"></ion-input>
               </ion-col> -->
+            </ion-row>
+            <ion-row>
               <ion-col>
-                <ion-button shape="round" fill="outline" color="success" size="small" (click)="addIngredients(i)">
+                <ion-button shape="round" fill="outline" color="success" size="block" (click)="addIngredients(i)">
                   <ion-icon slot="end" name="add-circle-outline" size="small"></ion-icon>Ingredient
                 </ion-button>
-                <ion-button shape="round" fill="outline" color="warning" size="small" (click)="move(-1, i)">
-                  <ion-icon slot="end" name="arrow-up-outline" size="small"></ion-icon>
-                </ion-button>
-                <ion-button shape="round" fill="outline" color="danger" size="small" (click)="move(i, 1)">
-                  <ion-icon slot="end" name="arrow-down-outline" size="small"></ion-icon>
-                </ion-button>
+
 
               </ion-col>
             </ion-row>
+
             <!-- Set Section -->
-            <div class="question-container" formArrayName="ingridiants">
-              <div [formGroupName]="j" *ngFor="let question of getIngredients(meal); let j = index">
-                <ion-row>
-                  <ion-col>
-                    <ion-input type="text" placeholder="Name" formControlName="name"></ion-input>
-                  </ion-col>
-                  <ion-col>
-                    <ion-input type="text" placeholder="Calory" formControlName="calory"></ion-input>
-                  </ion-col>
-                  <ion-col>
-                    <ion-input type="text" placeholder="Quantity" formControlName="quantity"></ion-input>
-                  </ion-col>
-                  <ion-button size="small" shape="round" fill="outline" color="danger" (click)="removeSet(i,j)">
-                    <ion-icon slot="end" name="remove-circle-outline" size="small"></ion-icon>
-                  </ion-button>
-                  <ion-button size="small" shape="round" fill="outline" color="warning" (click)="copySet(i,j)">
-                    <ion-icon slot="end" name="copy-outline" size="small"></ion-icon>
-                  </ion-button>
-                </ion-row>
+            <div class="question-container">
+              <div *ngFor="let question of getIngredients(meal); let j = index">
+                <div formArrayName="ingridients">
+                  <div [formGroupName]="j" class="ingredients">
+                    <ion-row>
+                      <ion-col>
+                        <ion-item>
+                        <ion-input type="text" placeholder="Name" formControlName="name" required></ion-input>
+                      </ion-item>
+                      </ion-col>
+                      <ion-col>
+                        <ion-item>
+                        <ion-input type="text" placeholder="Calory" formControlName="calory" required></ion-input>
+                      </ion-item>
+                      </ion-col>
+                      <ion-col>
+                        <ion-item>
+                        <ion-input type="text" placeholder="Quantity" formControlName="quantity" required></ion-input>
+                        </ion-item>
+                      </ion-col>
+                      <ion-buttons>
+                        <ion-button size="small" shape="round" fill="outline" color="danger" (click)="removeSet(i,j)">
+                          <ion-icon slot="end" name="remove-circle-outline" size="small"></ion-icon>
+                        </ion-button>
+                        <ion-button size="small" shape="round" fill="outline" color="warning" (click)="copySet(i,j)">
+                          <ion-icon slot="end" name="copy-outline" size="small"></ion-icon>
+                        </ion-button>
+                      </ion-buttons>
+                    </ion-row>
+                  </div>
+                </div>
               </div>
             </div>
 
           </div>
+
         </div>
-        <ion-button color="success" type="submit" class="point">Submit </ion-button>
+
 
       </div>
+      <ion-row>
+
+        <ion-col>
+          <ion-button (click)="addMeal()" size="block" class="point">
+            <ion-icon slot="start" name="add-circle-outline" size="small"></ion-icon>Add Meal
+          </ion-button>
+        </ion-col>
+
+        <ion-col>
+          <ion-button color="danger" size="block" (click)="removeMeal(val-1)" class="point">
+            <ion-icon slot="end" name="remove-circle-outline" size="small"></ion-icon>Remove Meal
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
+      <ion-button size="block" color="success" type="submit" [disabled]="!diet.valid" class="point">Submit
+      </ion-button>
     </form>
   </ion-grid>
   <!-- <pre> {{diet.value | json}} </pre> -->

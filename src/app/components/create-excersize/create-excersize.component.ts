@@ -54,7 +54,7 @@ export class CreateExcersizeComponent implements OnInit {
   equipements: string[] = ['Cable', 'Dumbbell','Barbell'];
   regims: string[] = ['Zym', 'Yoga'];
   sports: string[]=['Yes','No'];
-
+  // muscles: string[]="";
   excersizeObj: Excersize;
   private baseUrl11 = 'http://localhost:8080/api/excersizes';
   validateAllFormFields(formGroup: FormGroup) {         //{1}
@@ -102,6 +102,6 @@ export class CreateExcersizeComponent implements OnInit {
     };
   }
   dismiss() {
-    this.modalCtrl.dismiss(this.excersizeObj.name);
+    this.modalCtrl.dismiss(this.excersizeObj?.name);
   }
 }

@@ -1,14 +1,16 @@
-<ion-content>
-  <ion-card-header>
-    <ion-card-title>Create Excersize</ion-card-title>
-    <!-- <ion-searchbar></ion-searchbar> -->
-    <ion-buttons>
-      <ion-button (click)="dismiss()">
-        Close
-      </ion-button>
+<ion-header>
+
+  <ion-toolbar color='secondry'>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/recipes"></ion-back-button>
     </ion-buttons>
-  </ion-card-header>
-  <ion-card-content>
+
+    <ion-title>Create Excersize</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="form">
     <form [formGroup]="excersize" (ngSubmit)="createExcersize()">
       <ion-item>
         <ion-label position="floating">
@@ -18,7 +20,7 @@
       </ion-item>
       <span class="error"
         *ngIf="!excersize.get('name').valid && (excersize.get('name').touched || excersize.get('name').dirty)">
-        Please provide a valid Workout Name.
+        <!-- Please provide a valid Workout Name. -->
         <span *ngIf="excersize.get('name')?.errors?.required">
           Name is required.
         </span>
@@ -31,7 +33,7 @@
       </ion-item>
       <span class="error"
         *ngIf="!excersize.get('variation').valid && (excersize.get('variation').touched || excersize.get('variation').dirty)">
-        Please provide a valid Variation Name.
+        <!-- Please provide a valid Variation Name. -->
         <span *ngIf="excersize.get('variation')?.errors?.required">
           Variation is required.
         </span>
@@ -44,7 +46,7 @@
       </ion-item>
       <span class="error" color="danger"
         *ngIf="!excersize.get('otherMucles').valid && (excersize.get('otherMucles').touched || excersize.get('otherMucles').dirty)">
-        Please provide a valid Other Muscle Name.
+        <!-- Please provide a valid Other Muscle Name. -->
         <span *ngIf="excersize.get('otherMucles')?.errors?.required">
           Other Muscle is required.
         </span>
@@ -57,72 +59,90 @@
       </ion-item>
       <span class="error" color="danger"
         *ngIf="!excersize.get('description').valid && (excersize.get('description').touched || excersize.get('description').dirty)">
-        Please provide a valid description.
+        <!-- Please provide a valid description. -->
         <span *ngIf="excersize.get('description')?.errors?.required">
           Description is required.
         </span>
       </span>
-      <ion-item>
-        <ion-label position="floating">
-          Select Type
-        </ion-label>
-        <ion-select type="text" [formControlName]="'type'" required>
-          <ion-select-option *ngFor="let type of types">{{type}}</ion-select-option>
-        </ion-select>
-      </ion-item>
-      <span class="error" color="danger"
-        *ngIf="!excersize.get('type').valid && (excersize.get('type').touched || excersize.get('type').dirty)">
-        Please provide a valid type.
-        <span *ngIf="excersize.get('type')?.errors?.required">
-          Type is required.
-        </span>
-      </span>
-      <ion-item>
-        <ion-label position="floating">
-          Select Level
-        </ion-label>
-        <ion-select [formControlName]="'level'" required>
-          <ion-select-option *ngFor="let level of levels" value="{{level}}">{{level}}</ion-select-option>
-        </ion-select>
-      </ion-item>
-      <span class="error" color="danger"
-        *ngIf="!excersize.get('level').valid && (excersize.get('level').touched || excersize.get('level').dirty)">
-        Please provide a valid Level.
-        <span *ngIf="excersize.get('level')?.errors?.required">
-          Level is required.
-        </span>
-      </span>
-      <ion-item>
-        <ion-label position="floating">
-          Select Force
-        </ion-label>
-        <ion-select [formControlName]="'force'" required>
-          <ion-select-option *ngFor="let force of forces" [value]="force">{{force}}</ion-select-option>
-        </ion-select>
-      </ion-item>
-      <span class="error" color="danger"
-        *ngIf="!excersize.get('force').valid && (excersize.get('force').touched || excersize.get('force').dirty)">
-        Please provide a valid force.
-        <span *ngIf="excersize.get('force')?.errors?.required">
-          Force is required.
-        </span>
-      </span>
-      <ion-item>
-        <ion-label position="floating">
-          Select Mechanics Type
-        </ion-label>
-        <ion-select [formControlName]="'mechanicsType'" required>
-          <ion-select-option *ngFor="let mechanicsType of mechanicsTypes" value="{{mechanicsType}}">{{mechanicsType}}
-          </ion-select-option>
-        </ion-select>
-      </ion-item>
-      <span class="error" color="danger"
-        *ngIf="!excersize.get('mechanicsType').valid && (excersize.get('mechanicsType').touched || excersize.get('mechanicsType').dirty)">
-        Please provide a valid mechanics Type.
-        <span *ngIf="excersize.get('mechanicsType')?.errors?.required">
-          Mechanics Type is required.
-        </span>
-      </span>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">
+              Select Level
+            </ion-label>
+            <ion-select [formControlName]="'level'" required>
+              <ion-select-option *ngFor="let level of levels" value="{{level}}">{{level}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <span class="error" color="danger"
+            *ngIf="!excersize.get('level').valid && (excersize.get('level').touched || excersize.get('level').dirty)">
+            <!-- Please provide a valid Level. -->
+            <span *ngIf="excersize.get('level')?.errors?.required">
+              Level is required.
+            </span>
+          </span>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">
+              Select Type
+            </ion-label>
+            <ion-select type="text" [formControlName]="'type'" required>
+              <ion-select-option *ngFor="let type of types">{{type}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <span class="error" color="danger"
+            *ngIf="!excersize.get('type').valid && (excersize.get('type').touched || excersize.get('type').dirty)">
+            <!-- Please provide a valid type. -->
+            <span *ngIf="excersize.get('type')?.errors?.required">
+              Type is required.
+            </span>
+          </span>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">
+              Select Force
+            </ion-label>
+            <ion-select [formControlName]="'force'" required>
+              <ion-select-option *ngFor="let force of forces" [value]="force">{{force}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <span class="error" color="danger"
+            *ngIf="!excersize.get('force').valid && (excersize.get('force').touched || excersize.get('force').dirty)">
+            <!-- Please provide a valid force. -->
+            <span *ngIf="excersize.get('force')?.errors?.required">
+              Force is required.
+            </span>
+          </span>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">
+              Mechanics Type
+            </ion-label>
+            <ion-select [formControlName]="'mechanicsType'" required>
+              <ion-select-option *ngFor="let mechanicsType of mechanicsTypes" value="{{mechanicsType}}">
+                {{mechanicsType}}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+          <span class="error" color="danger"
+            *ngIf="!excersize.get('mechanicsType').valid && (excersize.get('mechanicsType').touched || excersize.get('mechanicsType').dirty)">
+            <!-- Please provide a valid mechanics Type. -->
+            <span *ngIf="excersize.get('mechanicsType')?.errors?.required">
+              Mechanics Type is required.
+            </span>
+          </span>
+        </ion-col>
+      </ion-row>
+
+
+
       <ion-item>
         <ion-label position="floating">
           Select Equipement
@@ -134,24 +154,24 @@
       </ion-item>
       <span class="error" color="danger"
         *ngIf="!excersize.get('equipement').valid && (excersize.get('equipement').touched || excersize.get('equipement').dirty)">
-        Please provide a valid equipement.
+        <!-- Please provide a valid equipement. -->
         <span *ngIf="excersize.get('equipement')?.errors?.required">
           Equipement is required.
         </span>
       </span>
-      
+
       <ion-item>
         <ion-label position="floating">
           Select Regim
         </ion-label>
         <ion-select [formControlName]="'regim'" required>
-          <ion-select-option *ngFor="let equipement of equipements" value="{{equipement}}">{{equipement}}
+          <ion-select-option *ngFor="let regim of regims" value="{{regim}}">{{regim}}
           </ion-select-option>
         </ion-select>
       </ion-item>
       <span class="error" color="danger"
         *ngIf="!excersize.get('regim').valid && (excersize.get('regim').touched || excersize.get('regim').dirty)">
-        Please provide a valid regim.
+        <!-- Please provide a valid regim. -->
         <span *ngIf="excersize.get('regim')?.errors?.required">
           Regim is required.
         </span>
@@ -164,18 +184,20 @@
       </ion-item>
       <span class="error" color="danger"
         *ngIf="!excersize.get('mainMuscleGrp').valid && (excersize.get('mainMuscleGrp').touched || excersize.get('mainMuscleGrp').dirty)">
-        Please provide a valid main Muscle Grp.
+        <!-- Please provide a valid main Muscle Grp. -->
         <span *ngIf="excersize.get('mainMuscleGrp')?.errors?.required">
           main Muscle Grp is required.
         </span>
       </span>
 
-      <div class="ion-margin-vertical ion-text-right">
-        <ion-button type="reset" fill="outline" color="danger">
+      <div class="buttons">
+
+        <ion-button size="block" type="reset" fill="outline" color="danger">
           <ion-icon slot="start" name="close-circle-outline"></ion-icon>Clear
         </ion-button>
-        <ion-button type="submit">CReate</ion-button>
+        <ion-button color="success" size="block" type="submit">Create</ion-button>
       </div>
+
 
       <!-- <span style="padding-left: 15px">New User? <a routerLink="/signup">SIGN UP</a></span> -->
 
@@ -187,7 +209,7 @@
             <p class="register-success-text">{{registerSuccessMessage}}</p>
         </div> -->
     </form>
-  </ion-card-content>
+  </div>
   <!-- </ion-card>  -->
 
   <!-- </ion-col>

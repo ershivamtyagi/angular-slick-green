@@ -31,6 +31,9 @@ export class AppComponent {
    this.authService.loggedIn.subscribe(
        data => this.isLoggedIn = data
        );
+       this.authService.username.subscribe(
+        data => this.username = data
+        );
     this.username = this.authService.getUserName();
   }
 

@@ -1,8 +1,5 @@
 <ion-content>
-    <div class="title">
-        Get more out of your growth process with Premium
-    </div>
-    <div class="plan-list">
+    <!-- <div class="plan-list">
         <div class="plan-item color-2"  *ngFor="let e of products" [routerLink]="['/userPrograms',e.id]">
            
             <div class="plan-title">
@@ -12,18 +9,18 @@
                 Current Program    
             </div>
         </div>
-    </div>
-    <!-- <ion-card>
+    </div> -->
+    <ion-card *ngFor='let tempProduct of products' [routerLink]="['/userPrograms',tempProduct.id]">
+        <ion-card-header>
         <ion-item>
-
             <ion-grid>
                 <ion-row class="plan-item color-2">
-                    <ion-col class="plan-title"> {{e.name}}</ion-col>
+                    <ion-col class="plan-title"> {{tempProduct.name}}</ion-col>
                 </ion-row>
             </ion-grid>
-
-
         </ion-item>
-    </ion-card> -->
+
+        </ion-card-header>
+    </ion-card>
 
 </ion-content>

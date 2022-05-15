@@ -40,8 +40,8 @@ export class SaveDietComponent implements OnInit {
   initMeal() {
     return new FormGroup({
       //selling_points: this.fb.array([this.fb.group({point:''})])
-      sno: new FormControl(''),
-      name: new FormControl(''),
+      sno: new FormControl('',Validators.required),
+      name: new FormControl('',Validators.required),
       ingridients: new FormArray([
         // this.initSet()
       ])
@@ -238,4 +238,15 @@ export class SaveDietComponent implements OnInit {
       this.flag=true;
     })
   }
+  validateAllFormFields(formGroup: FormGroup) {         //{1}
+    Object.keys(formGroup.controls).forEach(field => {  //{2}
+      const control = formGroup.get(field);             //{3}
+      if (control instanceof FormControl) {             //{4}
+        control.markAsTouched({ onlySelf: true });
+      } else if (control instanceof FormGroup) {        //{5}
+        this.validateAllFormFields(control);            //{6}
+      }
+    });
+  }
+  
 }

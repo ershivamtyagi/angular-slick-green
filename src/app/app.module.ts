@@ -26,7 +26,7 @@ import { UserProgramDetailComponent } from './components/user-program-detail/use
 import { AssignProgramToUserComponent } from './components/assign-program-to-user/assign-program-to-user.component';
 import { WebIntent } from '@ionic-native/web-intent/ngx';
 import { UserSettingComponent } from './components/user-setting/user-setting.component';
-import { ShowWorkoutComponent } from './components/show-workout/show-workout.component';
+import { SaveWorkoutComponent } from './components/save-workout/save-workout.component';
 import { CreateProgramComponent } from './components/create-program/create-program.component';
 //Material Design
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -43,16 +43,18 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import { DemoComponent } from './components/demo/demo.component';
-import { SaveWorkoutComponent } from './components/save-workout/save-workout.component';
 import { ExersizePopoverComponent } from './components/exersize-popover/exersize-popover.component';
 import { CreateExcersizeComponent } from './components/create-excersize/create-excersize.component';
 import { SaveDietComponent } from './components/save-diet/save-diet.component';
+import { TestComponent } from './components/test/test.component';
+import { SharedDirectiveModule } from './directives/shared-directive.module';
+import { HideHeaderDirective } from './directives/hide-header.directive';
 
 @NgModule({
   declarations: [AppComponent, ProductCategoryMenuComponent, UserProfileComponent, LoginComponent, SignupComponent,ProductListComponent,
   ProductDetailsComponent, CartStatusComponent,SearchComponent , ExcersizeHistoryComponent, ExcersizeListComponent, UserProgramsComponent,
-  UserProgramDetailComponent,AssignProgramToUserComponent,UserSettingComponent,ShowWorkoutComponent,CreateProgramComponent,DemoComponent,
-  SaveWorkoutComponent,ExersizePopoverComponent,CreateExcersizeComponent,SaveDietComponent],
+  UserProgramDetailComponent,AssignProgramToUserComponent,UserSettingComponent,CreateProgramComponent,DemoComponent,
+  SaveWorkoutComponent,ExersizePopoverComponent,CreateExcersizeComponent,SaveDietComponent,TestComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, NgxWebstorageModule.forRoot(), ReactiveFormsModule, BrowserAnimationsModule,
     MatButtonModule,
@@ -64,7 +66,8 @@ import { SaveDietComponent } from './components/save-diet/save-diet.component';
     MatSnackBarModule,
     MatTooltipModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    SharedDirectiveModule
   ],
   providers: [
     StatusBar,

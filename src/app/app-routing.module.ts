@@ -25,14 +25,13 @@ import { ExcersizeListComponent } from './components/excersize-list/excersize-li
 import { UserProgramsComponent } from './components/user-programs/user-programs.component';
 import { UserProgramDetailComponent } from './components/user-program-detail/user-program-detail.component';
 import { AssignProgramToUserComponent } from './components/assign-program-to-user/assign-program-to-user.component';
-import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { AuthGuard } from './components/auth/auth.guard';
 import { UserSettingComponent } from './components/user-setting/user-setting.component';
-import { ShowWorkoutComponent } from './components/show-workout/show-workout.component';
 import { CreateProgramComponent } from './components/create-program/create-program.component';
-import { DemoComponent } from './components/demo/demo.component';
 import { SaveWorkoutComponent } from './components/save-workout/save-workout.component';
 import { SaveDietComponent } from './components/save-diet/save-diet.component';
+import { TestComponent } from './components/test/test.component';
+import { CreateExcersizeComponent } from './components/create-excersize/create-excersize.component';
 
 const routes: Routes = [
   // { path: '', component: HomeComponent },
@@ -44,22 +43,25 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
   //  {path: 'cart-details', component: CartDetailsComponent},
-  {path: 'products/:id', component: ProductDetailsComponent},
-  {path: 'demo/:userId/:excersizeId', component: ExcersizeHistoryComponent},
-  {path: 'search/:keyword', component: ProductListComponent},
-  {path: 'category/:id', component: ProductListComponent},
-  {path: 'showWorkout/:categoryId', component: ShowWorkoutComponent},
-  {path: 'userPrograms', component: UserProgramsComponent},
-  {path: 'userPrograms/:id', component: UserProgramDetailComponent},
-  {path: 'category', component: ProductListComponent},
-  {path: 'products', component: ProductListComponent},
-  {path: 'excersizes', component: ExcersizeListComponent},
-  {path: 'assignProgramToUser', component: AssignProgramToUserComponent},
-  {path: 'createProgram', component: CreateProgramComponent},
-   {path: 'createDiet', component: SaveDietComponent},
-  {path: 'createWorkout', component: SaveWorkoutComponent},
-  {path: '', redirectTo: '/products', pathMatch: 'full'},
-  {path: '**', redirectTo: '/products', pathMatch: 'full'}
+  { path: 'products/:id', component: ProductDetailsComponent },
+  { path: 'demo/:userId/:excersizeId', component: ExcersizeHistoryComponent },
+  { path: 'search/:keyword', component: ProductListComponent },
+  { path: 'category/:id', component: ProductListComponent },
+  { path: 'showWorkout/:categoryId', component: TestComponent },
+  { path: 'userPrograms', component: UserProgramsComponent },
+  { path: 'userPrograms/:id', component: UserProgramDetailComponent },
+  { path: 'category', component: ProductListComponent },
+  { path: 'products', component: ProductListComponent },
+  { path: 'excersizes', component: ExcersizeListComponent },
+  { path: 'assignProgramToUser', component: AssignProgramToUserComponent },
+  { path: 'createProgram', component: CreateProgramComponent },
+  { path: 'createDiet', component: SaveDietComponent },
+  { path: 'test', component: TestComponent },
+  { path: 'addExcersize', component: CreateExcersizeComponent },
+
+  { path: 'createWorkout', component: SaveWorkoutComponent },
+  { path: '', redirectTo: '/products', pathMatch: 'full' },
+  { path: '**', redirectTo: '/products', pathMatch: 'full' }
 
 ];
 

@@ -2,7 +2,8 @@
   <ion-split-pane when="sm" contentId="main-content">
     <ion-menu contentId="main-content" type="overlay" swipeGesture="true">
       <ion-header>
-        <ion-toolbar color="primary" class="user-profile">
+
+        <ion-toolbar *ngIf="isLoggedIn" color="primary" class="user-profile">
           <!-- <ion-title>Menu</ion-title> -->
           <ion-grid>
             <ion-row>
@@ -12,13 +13,14 @@
                 </div>
               </ion-col>
               <ion-col class="ion-padding" size="8">
+                
                 <h2 ion-text class="no-margin bold text-white">
-                  Shivam Tyagi
+                  {{username}}
                 </h2>
                 <span ion-text color="light">Subscriber (2.0)</span>
               </ion-col>
             </ion-row>
-            <div *ngIf="isLoggedIn">
+            <!-- <div *ngIf="isLoggedIn">
               <ion-row class="other-data ion-no-padding">
                 <ion-col class="column  ion-no-padding">
                   <ion-button size="small" expand="full" class="ion-no-padding" color="light"
@@ -35,17 +37,44 @@
                   </ion-button>
                 </ion-col>
               </ion-row>
-            </div>
+            </div> -->
           </ion-grid>
         </ion-toolbar>
       </ion-header>
 
       <ion-content color="primary">
         <ion-list class="user-list">
-          
+
           <app-product-category-menu></app-product-category-menu>
-
-
+          <div *ngIf="isLoggedIn">
+            <ion-list-header>
+              Account
+            </ion-list-header>
+            <ion-menu-toggle [autoHide]="false" class="text-1x">
+              <ion-row class="menu-layout">
+                <ion-col>
+                  <div class="col-inner">
+                    <ion-list>
+                      <ion-item lines="none" (click)="goToUserProfile()" routerLinkActive="active-link" button>
+                        <ion-icon slot="start" name="person" button></ion-icon>
+                        <ion-label>
+                          Profile
+                        </ion-label>
+                      </ion-item>
+                      <ion-item lines="none" (click)="logout()" routerLinkActive="active-link" button>
+                        <ion-icon slot="start" name="log-out" button></ion-icon>
+                        <ion-label>
+                          Logout
+                        </ion-label>
+                        <!-- <ion-button size="small" class="ion-no-padding" expand="full" color="light" menuClose
+                      (click)="logout()"></ion-button> -->
+                      </ion-item>
+                    </ion-list>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-menu-toggle>
+          </div>
         </ion-list>
       </ion-content>
     </ion-menu>
@@ -54,7 +83,7 @@
       <ion-header>
 
 
-        <ion-toolbar>
+        <ion-toolbar #toolbar>
           <ion-buttons slot="start">
             <ion-menu-toggle>
               <ion-button>
@@ -105,7 +134,7 @@
         </ion-toolbar>
         <!-- <app-search></app-search> -->
       </ion-header>
-      <ion-content class="ion-padding">
+      <ion-content class="ion-padding" scrollEvents="true" [appHideHeader]="toolbar">
         <ion-router-outlet></ion-router-outlet>
       </ion-content>
     </div>
